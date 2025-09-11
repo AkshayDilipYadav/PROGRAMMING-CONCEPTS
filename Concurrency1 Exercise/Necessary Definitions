@@ -1,0 +1,40 @@
+1. Concurrency:
+
+Concurrency is the ability of a system to deal with multiple tasks at once by making progress on more than one task during overlapping time periods. 
+It doesn’t necessarily mean they run simultaneously, but that the system can interleave execution.
+Concurrency is about dealing with many tasks at once.
+
+2. Parallelism:
+
+Parallelism is the simultaneous execution of multiple tasks or instructions, typically on different processors or cores.
+It is a subset of concurrency focused on true simultaneous execution.
+Parallelism is about doing many tasks at the same exact time.
+
+3. Process: 
+
+A process is an independent program in execution with its own memory space, system resources, and execution context. Each process is isolated from others.
+A process is the independent unit of execution with its own memory and resources.
+
+4. Thread:
+
+A thread is the smallest unit of execution within a process. Threads within the same process share memory and resources but have independent execution paths.
+A thread is the lightweight unit of execution inside a process.
+
+5. Task:
+
+A task is a logical unit of work that needs to be executed, often mapped to a thread or part of a thread’s workload. 
+In modern programming (e.g., Java Future, .NET Task), it represents an asynchronous operation.
+A task is the unit of work scheduled for execution.
+
+6. Context Switching
+
+Context switching is the process of storing the state of a running process or thread and restoring the state of 
+another so the CPU can switch execution. This enables multitasking on a single CPU.
+Context switching is the CPU’s way of switching between tasks/processes/threads.
+
+7. Interleaving:
+
+Interleaving is the arrangement where multiple tasks make progress by alternating execution steps, giving the illusion of parallel execution on a single CPU core.
+Interleaving is the step-by-step alternating execution of tasks.
+
+
