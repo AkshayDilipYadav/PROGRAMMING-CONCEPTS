@@ -1,0 +1,202 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Basics & Theory
+
+Q1: What is method overloading in Java?
+Method overloading happens when two or more methods in the same class have the same name but different parameter lists (different number or type of parameters).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2: What is method overriding in Java?
+Method overriding happens when a subclass provides a specific implementation of a method that is already defined in its superclass, using the same method signature.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3: What is the main difference between overloading and overriding?
+
+Feature	Overloading	Overriding
+Class Involved	Same class (or subclass too)	Requires superclass–subclass relationship
+Signature	Same method name, different parameters	Same method name & parameters
+Return Type	Can be different (but not only by return type)	Must be same or covariant
+Compile/Runtime	Resolved at compile time (static polymorphism)	Resolved at runtime (dynamic polymorphism)
+Access Modifiers	No restriction	Cannot reduce visibility
+Static Methods	Can be overloaded	Cannot be overridden (only hidden)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q4: Is method overloading a type of polymorphism?
+Yes , it is compile-time polymorphism (static polymorphism).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q5: Is method overriding a type of polymorphism?
+Yes , it is runtime polymorphism (dynamic polymorphism).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Rules & Restrictions
+
+Q6: Can we overload methods by changing only the return type?
+No , because return type alone doesn’t differentiate methods at compile time.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q7: Can we override a method by changing the return type?
+Yes , but only if the new return type is a covariant type (a subclass of the original return type).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q8: Can static methods be overloaded?
+Yes , static methods can be overloaded like normal methods.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q9: Can static methods be overridden?
+No , they can only be hidden (if subclass defines another static method with the same signature).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q10: Can constructors be overloaded?
+Yes , constructors can be overloaded by having multiple constructors with different parameters.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q11: Can constructors be overridden?
+No , constructors are not inherited, so they cannot be overridden.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q12: Can private methods be overridden?
+No , private methods are not visible to subclasses, so they cannot be overridden (they are hidden).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q13: Can final methods be overridden?
+No , final methods cannot be overridden, but they can be overloaded.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Code-Level Questions
+
+Q14: Example of Method Overloading
+
+class Calculator {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; } // Overloaded
+    int add(int a, int b, int c) { return a + b + c; } // Overloaded
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q15: Example of Method Overriding
+
+class Animal {
+    void sound() { System.out.println("Animal makes sound"); }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() { System.out.println("Dog barks"); }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Inheritance & Polymorphism
+
+Q16: When is method binding done for overloading vs overriding?
+
+Overloading → Compile time (early binding).
+
+Overriding → Runtime (late binding).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q17: Can a subclass call the parent’s overridden method?
+Yes , using super.methodName().
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q18: What happens if you call an overridden method using a parent reference?
+The subclass method will be executed (runtime polymorphism).
+
+Example:
+
+Animal a = new Dog();
+a.sound(); // Dog barks
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Real-world Scenarios
+
+Q19: Why do we use method overloading in real projects?
+
+To provide flexibility in method calls.
+
+Example: println() in Java is overloaded for int, char, String, etc.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q20: Why do we use method overriding in real projects?
+
+To implement runtime polymorphism.
+
+Example: In frameworks like Spring, you override methods (like configure()) to provide specific behavior.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q21: Can you explain method overriding in terms of OOP principles?
+Yes , overriding supports inheritance and polymorphism by allowing subclasses to provide specialized behavior.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Tricky Questions
+
+Q22: What happens if you overload a method with varargs and without varargs?
+Compiler chooses the most specific method; sometimes it leads to ambiguity error.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q23: Can an overloaded method throw different exceptions?
+Yes , overloading is independent of exception handling.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q24: Can an overridden method throw fewer or more exceptions?
+
+It can throw fewer or narrower (subclass) exceptions.
+
+It cannot throw broader checked exceptions.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q25: Can we override main method in Java?
+Yes , but JVM always looks for public static void main(String[] args). Other versions will just act as overloaded methods.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q26: Which takes priority if both overloading and overriding apply?
+Overriding takes priority at runtime, because method dispatch is dynamic.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q27: How does method overloading interact with autoboxing and type promotion?
+The compiler may promote smaller data types (e.g., int → long) or use autoboxing (int → Integer) to resolve method calls, which can sometimes cause unexpected method resolution.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q28: Is method overloading possible across different classes?
+Yes , if the subclass defines methods with the same name but different parameter lists, it counts as overloading (not overriding).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q29: Is method overriding possible without inheritance?
+No , overriding requires an is-a relationship (inheritance).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q30: Which keyword is recommended for overriding methods?
+The @Override annotation → it helps the compiler catch mistakes (wrong signatures).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
