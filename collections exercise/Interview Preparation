@@ -1,0 +1,239 @@
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Basics & Theory
+
+Q1: What is the Java Collections Framework (JCF)?
+The Java Collections Framework is a set of classes and interfaces that implement commonly reusable collection data structures like lists, sets, and maps.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q2: What is the difference between Collection and Collections in Java?
+
+Collection is an interface (root of the collection hierarchy).
+
+Collections is a utility class with static methods (like sort(), reverse(), shuffle()).
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q3: What are the main interfaces of the Collections Framework?
+
+Collection → parent interface of List, Set, Queue.
+
+List → ordered, allows duplicates (e.g., ArrayList, LinkedList).
+
+Set → unordered, no duplicates (e.g., HashSet, TreeSet).
+
+Queue → FIFO ordering (e.g., PriorityQueue).
+
+Map (separate hierarchy) → key-value pairs (e.g., HashMap, TreeMap).
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q4: What is the difference between List, Set, and Map?
+
+List: Ordered, allows duplicates.
+
+Set: Unordered, no duplicates.
+
+Map: Key-value pairs, keys unique, values can duplicate.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q5: What is the difference between Collection and Map hierarchy?
+
+Collection works with single elements.
+
+Map works with key-value pairs, and does not extend Collection.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Implementations
+
+Q6: Difference between ArrayList and LinkedList?
+
+ArrayList: Backed by a dynamic array, fast random access, slower insert/delete in middle.
+
+LinkedList: Doubly linked list, fast insert/delete, slower random access.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q7: Difference between HashSet and TreeSet?
+
+HashSet: Unordered, faster (O(1)) operations.
+
+TreeSet: Ordered (sorted), slower (O(log n)) operations.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q8: Difference between HashMap and Hashtable?
+
+HashMap: Not synchronized, allows one null key, many null values.
+
+Hashtable: Synchronized, doesn’t allow null keys or values.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q9: Difference between HashMap and ConcurrentHashMap?
+
+HashMap: Not thread-safe.
+
+ConcurrentHashMap: Thread-safe with better performance than Hashtable (uses segment locking).
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q10: What is the difference between fail-fast and fail-safe iterators?
+
+Fail-fast (e.g., ArrayList, HashMap): Throws ConcurrentModificationException if modified during iteration.
+
+Fail-safe (e.g., ConcurrentHashMap, CopyOnWriteArrayList): Works on a copy, no exception, but may not reflect latest changes.
+
+Performance & Behavior
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q11: What is the default load factor of HashMap?
+0.75 – meaning when 75% full, the HashMap resizes.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q12: What is the initial capacity of ArrayList by default?
+10 elements.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q13: What is the time complexity of operations in ArrayList and HashMap?
+
+ArrayList: get = O(1), add = O(1 amortized), remove = O(n).
+
+HashMap: put/get/remove = O(1) average, O(n) worst case.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q14: How does HashMap handle collisions?
+
+Before Java 8: Linked list chaining.
+
+Since Java 8: Switches to balanced tree if bucket size exceeds threshold, improving worst-case to O(log n).
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q15: Why should we override hashCode() and equals() when using custom objects in HashSet or HashMap?
+Because HashSet/HashMap use hashCode() to place objects in buckets and equals() to check equality. Without overriding, unexpected behavior occurs (e.g., duplicates not detected).
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Real-World Usage
+
+Q16: Why are collections better than arrays?
+
+Dynamic sizing.
+
+Rich APIs (search, sort, insert, delete).
+
+Different implementations for different needs.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q17: Where would you use a LinkedList over an ArrayList?
+When frequent insertions/deletions are needed, especially in the middle of the list.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q18: Where would you use TreeMap instead of HashMap?
+When you need sorted order of keys.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q19: What is the use of EnumMap?
+Optimized Map implementation where keys are enums.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q20: What is the use of WeakHashMap?
+A map where keys are weakly referenced, meaning they can be garbage collected if no strong reference exists.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Tricky Questions
+
+Q21: Can a HashMap have null key?
+Yes, one null key.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q22: Can a TreeMap have null key?
+No, it will throw NullPointerException.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q23: What happens if two objects have same hashCode but are not equal?
+They go into the same bucket. The equals() method resolves the conflict by distinguishing them.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q24: Why is String a good candidate for HashMap keys?
+Because String is immutable, its hashCode is cached, making it efficient and safe as a key.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q25: Can we sort a HashMap?
+No, but we can use a TreeMap for natural ordering or use Streams/Collections to sort entries.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q26: What is the difference between Iterator and ListIterator?
+
+Iterator: Works on Collection, traverses forward only.
+
+ListIterator: Works on List, traverses both forward and backward, allows modification.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q27: Why are ConcurrentModificationException not guaranteed in multi-threaded programs?
+Because it is a best-effort exception — sometimes modifications may go undetected.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q28: Why is CopyOnWriteArrayList used?
+To avoid ConcurrentModificationException in multi-threaded environments, at the cost of higher memory (creates a copy on each write).
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q29: Can Collections be made thread-safe?
+Yes, using Collections.synchronizedList() or concurrent alternatives like ConcurrentHashMap.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q30: What’s the difference between Comparable and Comparator in Collections?
+
+Comparable: Natural ordering, implemented by the class itself (compareTo).
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Comparator: Custom ordering, implemented separately (compare).
