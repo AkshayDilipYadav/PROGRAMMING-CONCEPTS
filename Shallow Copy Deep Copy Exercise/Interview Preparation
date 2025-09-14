@@ -1,0 +1,202 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Basics & Theory
+
+Q1: What is a shallow copy in Java?
+A shallow copy copies the object’s fields, but if the field is a reference to another object, 
+it copies the reference (not the actual object). Both objects point to the same referenced instance.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2: What is a deep copy in Java?
+A deep copy copies the object and all objects referenced by it (full independent copy). 
+The cloned object has its own separate copies of nested objects.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3: What is the difference between shallow copy and deep copy?
+
+Feature	Shallow Copy	Deep Copy
+Copies object	 Yes	Yes
+Copies references	 (same ref)	 (new refs)
+Independence	 Changes in one affect the other	Fully independent
+Performance	Fast	Slower (more memory and processing)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q4: Which method in Java is used for creating a shallow copy?
+The clone() method of Object class creates a shallow copy by default.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q5: How do you implement a deep copy in Java?
+
+Manually clone nested objects inside clone().
+
+Or use serialization/deserialization to copy the whole object graph.
+
+Or use utility libraries like Apache Commons SerializationUtils.clone().
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Code-Level Questions
+
+Q6: Can you give a code example of shallow copy?
+
+class Address {
+    String city;
+    Address(String city) { this.city = city; }
+}
+
+class Person implements Cloneable {
+    String name;
+    Address address;
+
+    Person(String name, Address address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();  // shallow copy
+    }
+}
+
+Here, Person is copied, but address reference still points to the same object.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q7: Can you give a code example of deep copy?
+
+
+class Person implements Cloneable {
+    String name;
+    Address address;
+
+    Person(String name, Address address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+        Person p = (Person) super.clone();
+        p.address = new Address(this.address.city); // deep copy
+        return p;
+    }
+}
+
+
+Here, address is also cloned, so the copied Person is fully independent.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Tricky & Conceptual
+
+Q8: What happens if you modify a nested object after shallow copying?
+Both the original and copied object will reflect the change, because they share the same reference.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q9: Which is faster: shallow copy or deep copy? Why?
+
+Shallow copy is faster (just copies references).
+
+Deep copy is slower (creates new objects recursively).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q10: When should you use shallow copy vs deep copy?
+
+Shallow copy → When objects are immutable or you don’t need independent nested objects.
+
+Deep copy → When you need full independence between original and copy.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q11: Is clone() the only way to create copies in Java?
+No . Alternatives include:
+
+Copy constructor → new Person(existingPerson)
+
+Serialization → Write and read object
+
+Manual copying → Set fields explicitly.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q12: What is the role of Cloneable interface in Java?
+If a class does not implement Cloneable, calling clone() throws CloneNotSupportedException. 
+It’s a marker interface that enables cloning.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q13: Why is cloning considered broken or controversial in Java?
+Because:
+
+Default clone() only does shallow copy.
+
+It breaks encapsulation (bypasses constructors).
+
+It’s complex for deep copy (manual effort).
+Hence, many developers prefer copy constructors or factory methods.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Real-World & Bonus Questions
+
+Q14: What is a copy constructor? How does it differ from cloning?
+A copy constructor is a constructor that takes another object of the same type and copies its fields.
+
+Cloning → Uses clone() method, needs Cloneable.
+
+Copy constructor → Explicitly written, more controlled, easier to implement.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q15: Which approach is better: clone() or copy constructor?
+
+Copy constructor → Safer, more flexible, doesn’t depend on Cloneable.
+
+Clone() → Standardized but tricky with deep copies.
+Most industry projects prefer copy constructors.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q16: Can serialization be used for deep copy?
+Yes . By serializing and deserializing an object, a full deep copy is created.
+Downside → Performance overhead.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q17: How does deep copy handle cyclic references?
+
+Manual deep copy must handle cycles carefully (to avoid infinite loops).
+
+Serialization handles cyclic references automatically.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q18: Are arrays cloned shallowly or deeply in Java?
+
+clone() on an array → Creates a new array object but elements are copied 
+as references (so shallow for objects, deep for primitives).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q19: Is deep copy always required in real projects?
+No . Often shallow copy is enough if objects are immutable or shared intentionally. 
+Deep copy is used when full independence is required (e.g., cloning database objects, DTOs).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q20: Can you explain shallow vs deep copy with a real-world analogy?
+
+Shallow copy → Photocopy of a document with links (only the links are copied, not the linked documents).
+
+Deep copy → Photocopy plus copies of all linked documents (complete independent package).
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
