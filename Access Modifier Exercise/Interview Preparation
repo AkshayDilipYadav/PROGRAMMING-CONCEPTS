@@ -1,0 +1,130 @@
+
+-  Basics & Theory
+
+Q1: What are access modifiers in Java?
+Access modifiers are keywords in Java that control the visibility and accessibility 
+of classes, methods, and variables across different classes and packages.
+
+Q2: List all access modifiers in Java and explain their scope.
+
+public → Accessible from anywhere (same class, same package, subclass, other packages).
+
+protected → Accessible in the same class, same package, and by subclasses (even in different packages).
+
+default (no keyword) → Accessible only within the same package.
+
+private → Accessible only within the same class.
+
+Q3: What is the difference between access modifiers and non-access modifiers in Java? (e.g., public, private vs static, final)
+
+Access modifiers (public, protected, default, private) → Control visibility.
+
+Non-access modifiers (static, final, abstract, synchronized, transient, volatile, strictfp) → Define other behaviors of classes, methods, and variables.
+
+Q4: What is the default access modifier in Java?
+If no modifier is specified, the default is package-private (default), meaning the member is only accessible within the same package.
+
+Q5: Can a class be declared private or protected in Java? Why or why not?
+
+A top-level class can only be public or default.
+
+It cannot be private or protected because then it would be inaccessible to the JVM and other classes.
+
+However, inner classes can be private or protected.
+
+Q6: What’s the difference between protected and default (package-private) access?
+
+default → Accessible only within the same package.
+
+protected → Accessible within the same package and by subclasses (even if they are in another package).
+
+- Class-Level Questions
+
+Q7: Which access modifiers can be applied to top-level classes (not inner classes)?
+Only public and default (no modifier) are allowed.
+
+Q8: Why can’t we declare a top-level class as private or protected?
+Because such a class would be completely hidden from the outside world, making it unusable. The JVM itself couldn’t access it if it were private or protected.
+
+Q9: What access modifiers can nested (inner) classes have?
+  
+Nested classes can have all access modifiers: public, protected, default, and private.
+
+- Method/Variable-Level Questions
+
+Q10: Can we override a method and reduce its visibility (e.g., from public → protected)?
+  
+No. When overriding, you cannot reduce visibility because it would break polymorphism. (The subclass must honor or widen the visibility contract.)
+
+Q11: Can we override a protected method with public in a subclass? Why?
+  
+Yes. You can increase visibility (protected → public) because it still satisfies the parent’s contract while making it more accessible.
+
+Q12: Why should instance variables usually be private?
+  
+To achieve encapsulation: hiding internal data and exposing it only through controlled access methods (getters/setters). This protects data integrity.
+
+Q13: Can a constructor be private? What’s the use case?
+Yes. It prevents direct instantiation.
+
+Use cases: Singleton Pattern, Factory Methods, and Utility Classes.
+
+Inheritance & Packages
+
+Q14: How does the protected access modifier work across packages?
+
+In the same package → behaves like default.
+
+In a different package → accessible only through inheritance (i.e., by subclasses).
+
+Q15: What’s the difference between subclass in the same package vs subclass in another package?
+
+Subclass in the same package → Can access protected, default, public.
+
+Subclass in another package → Can access only protected and public.
+
+Q16: If a method is protected in a superclass, can it be accessed by a non-subclass in another package?
+  
+No. protected does not allow access for non-subclasses outside the package.
+
+- Real-world Scenarios
+
+Q17: Why is private often used with variables, and public used with getters/setters?
+  
+Because of encapsulation.
+
+Variables are kept private to protect them from direct access.
+
+Getters/setters are public to provide controlled access.
+
+Q18: Why are utility methods in frameworks (like Spring or Java Collections) usually public static?
+
+public → So they’re accessible globally.
+
+static → So they can be used without creating an object (e.g., Collections.sort(list)).
+
+Q19: Can we declare interface methods as protected or private?
+
+Before Java 9 → Only public abstract methods were allowed.
+
+From Java 9 onward → Interfaces can have private methods (for helper logic), but not protected.
+
+Q20: Why should we avoid making everything public in a project?
+  
+Because it breaks encapsulation, increases coupling, and makes the code harder to maintain and secure.
+
+- Bonus “Tricky” Questions
+
+Q21: What happens if two classes in different packages have the same name and both are public?
+  
+They can coexist, but you must use their fully qualified names (e.g., package1.Book vs package2.Book).
+
+Q22: Is it possible to access a private variable of another class using reflection?
+  
+Yes. Reflection can break encapsulation by using setAccessible(true), though it’s discouraged in real-world design.
+
+Q23: Can an abstract method be private? Why or why not?
+  
+No. An abstract method must be overridden by subclasses.
+
+If it were private, subclasses couldn’t see or override it, which defeats the purpose.
