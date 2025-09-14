@@ -2,6 +2,7 @@
 -  Basics & Theory
 
 Q1: What are access modifiers in Java?
+
 Access modifiers are keywords in Java that control the visibility and accessibility 
 of classes, methods, and variables across different classes and packages.
 
