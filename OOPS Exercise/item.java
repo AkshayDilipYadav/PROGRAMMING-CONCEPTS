@@ -16,13 +16,10 @@ public abstract class item {
 
     private String id;
 
-    public item(String id){
-        this.id = id;
-    }
+    public item(String id){this.id = id;}
 
-    public String getId(){
-        return id;
-    }
+    public String getId(){return id;}
 
     public abstract void displayInfo();
 }
+
