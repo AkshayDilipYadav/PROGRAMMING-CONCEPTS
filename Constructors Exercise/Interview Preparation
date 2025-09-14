@@ -1,9 +1,11 @@
 Basics & Theory
-
+-------------------------------------------------------------------------------------------------------------------------------------------------
 Q1: What is a constructor in Java?
 
 A constructor is a special method in Java that is used to initialize objects when they are created.
 It has the same name as the class and no return type (not even void).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Q2: How is a constructor different from a method in Java?
 
@@ -12,6 +14,8 @@ A constructor has no return type (not even void), while methods must have one.
 A constructor’s name must match the class name, methods can have any name.
 
 Constructors are called automatically when new is used, while methods are called explicitly.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Q3: What are the types of constructors in Java?
 
@@ -23,20 +27,28 @@ Parameterized constructor → Constructor with parameters for initializing objec
 
 Copy constructor (not built-in, but implemented manually) → Copies values from another object.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q4: What is a default constructor?
 
 A default constructor is a no-argument constructor that the compiler automatically provides if the programmer 
 does not define any constructor.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q5: What happens if you don’t define any constructor in a class?
 
 The compiler automatically provides a default no-argument constructor that initializes object fields to their default values.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Q6: Can a constructor be private? What’s the use case?
 
 Yes. A private constructor prevents instantiation from outside the class.
 
 Use cases: Singleton Pattern, Factory Pattern, Utility classes.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Q7: Can a constructor be static, final, or abstract?
 No.
@@ -47,18 +59,26 @@ Final → Constructors cannot be inherited or overridden.
 
 Abstract → Constructors must have a body, cannot be abstract.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q8: Can constructors be overloaded in Java?
 
 Yes. Multiple constructors can exist in the same class with different parameter lists (constructor overloading).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Q9: Can a constructor be inherited?
 
 No. Constructors are not inherited by subclasses. However, subclasses can call superclass constructors using super().
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q10: Can a constructor call another constructor?
 
 Yes. Within the same class, one constructor can call another using this().
 To call a superclass constructor, use super().
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Inheritance & Constructor Chaining
 
@@ -66,17 +86,25 @@ Q11: What is constructor chaining?
 
 Constructor chaining is when a constructor calls another constructor (in the same class using this() or in the parent class using super()). This helps reuse initialization logic.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q12: What happens if a subclass constructor does not explicitly call super()?
 
 The compiler automatically inserts a call to the no-argument constructor of the superclass.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Q13: Can you call both this() and super() in the same constructor?
 
 No. Only one can be the first statement of a constructor, so you cannot use both in the same constructor.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q14: If the superclass doesn’t have a no-arg constructor, what must the subclass do?
 
 The subclass must explicitly call a parameterized constructor of the superclass using super(args).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Special Behavior
 
@@ -84,18 +112,26 @@ Q15: Can a constructor return a value?
 
 No. A constructor does not have a return type. However, it returns the instance of the class implicitly.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q16: What is the difference between constructor and factory method?
 
 Constructor → Always returns a new object.
 
 Factory method → May return an existing object, subclass object, or even null.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q17: Can we have synchronized constructors in Java?
 
 No. Constructors cannot be declared synchronized directly. But you can synchronize the block of code inside the constructor.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q18: What is the order of constructor calls in inheritance?
 When a subclass object is created, constructors are called in the order of inheritance hierarchy:
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Superclass constructor → then subclass constructor.
 
@@ -103,11 +139,15 @@ Q19: Can we throw exceptions from constructors?
 
 Yes. A constructor can throw checked or unchecked exceptions like a method.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q20: What’s the difference between a constructor and an initializer block?
 
 Constructor → Runs when an object is created, can accept arguments.
 
 Initializer block → Runs before the constructor, cannot take arguments, useful for common initialization logic.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 - Bonus “Tricky” Questions
 
@@ -116,14 +156,20 @@ Q21: Why can’t constructors be abstract in Java?
 Because an abstract method has no body and must be implemented by subclasses,
 but a constructor must have a body to initialize objects.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q22: Can an interface have a constructor?
 
 No. Interfaces cannot be instantiated directly, so they don’t have constructors.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Q23: Can an enum have a constructor in Java?
 
 Yes. Enums can have constructors, but they are always private or package-private, 
 and called automatically when enum constants are created.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Q24: What’s the difference between constructor overloading and method overloading?
 
@@ -131,8 +177,12 @@ Constructor overloading → Multiple constructors with different parameter lists
 
 Method overloading → Multiple methods with the same name but different parameter lists/return types.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Q25: What is the difference between constructor overloading and constructor chaining?
 
 Overloading → Writing multiple constructors in the same class.
 
 Chaining → Calling one constructor from another (using this() or super()).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
