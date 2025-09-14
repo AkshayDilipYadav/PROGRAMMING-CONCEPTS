@@ -14,13 +14,15 @@ Method overriding happens when a subclass provides a specific implementation of 
 
 Q3: What is the main difference between overloading and overriding?
 
-Feature	Overloading	Overriding
-Class Involved	Same class (or subclass too)	Requires superclass–subclass relationship
-Signature	Same method name, different parameters	Same method name & parameters
-Return Type	Can be different (but not only by return type)	Must be same or covariant
-Compile/Runtime	Resolved at compile time (static polymorphism)	Resolved at runtime (dynamic polymorphism)
-Access Modifiers	No restriction	Cannot reduce visibility
-Static Methods	Can be overloaded	Cannot be overridden (only hidden)
+Overloading happens in the same class, while overriding requires a superclass–subclass relationship.
+
+Overloading depends on different parameter lists, while overriding requires the exact same parameter list.
+
+Overloading is resolved at compile-time (static polymorphism), while overriding is resolved at runtime (dynamic polymorphism).
+
+Overloading can have different return types as long as parameters differ, while overriding requires the same return type (or a covariant type).
+
+Overloading allows any access modifiers, while overriding cannot reduce the visibility of the method.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
