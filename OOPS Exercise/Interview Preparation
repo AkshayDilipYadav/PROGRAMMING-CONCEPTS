@@ -1,0 +1,285 @@
+------------------------------------------------------------------------------------------------------------------------------------
+
+Basics & Theory
+
+Q1: What is Object-Oriented Programming (OOP)?
+OOP is a programming paradigm that organizes software around objects (real-world entities) that encapsulate data (fields) and behavior (methods), enabling reusability, modularity, and abstraction.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q2: What are the four main principles of OOP?
+
+Encapsulation → Wrapping data and behavior together, restricting direct access.
+
+Inheritance → Mechanism to acquire properties and behaviors from another class.
+
+Polymorphism → Ability of a method/behavior to take multiple forms (overloading & overriding).
+
+Abstraction → Hiding implementation details and exposing only essential features.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q3: What is the difference between OOP and Procedural Programming?
+
+Procedural → Focus on functions/procedures, data is separate.
+
+OOP → Focus on objects that bundle data + methods, making it closer to real-world modeling.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q4: What are classes and objects in Java?
+
+Class → Blueprint/template for creating objects.
+
+Object → Instance of a class, representing real-world entities.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q5: What is encapsulation? Give an example.
+Encapsulation is hiding the internal state of an object and providing controlled access through getters/setters.
+Example: private variables + public getter/setter.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q6: What is inheritance in Java?
+Inheritance allows one class (child/subclass) to acquire properties and methods of another class (parent/superclass) using the extends keyword.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q7: What are the types of inheritance in Java?
+
+Single inheritance → one class inherits another.
+
+Multilevel inheritance → class inherits from a subclass.
+
+Hierarchical inheritance → multiple subclasses inherit the same parent.
+(Java does not support multiple inheritance with classes, but interfaces provide it.)
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q8: What is polymorphism in Java?
+Polymorphism means "many forms".
+
+Compile-time polymorphism → Method overloading.
+
+Runtime polymorphism → Method overriding.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q9: What is abstraction in Java?
+Abstraction hides implementation details and exposes only functionality. Achieved using:
+
+Abstract classes → with abstract + concrete methods.
+
+Interfaces → contracts with abstract/default/static methods.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q10: What’s the difference between abstraction and encapsulation?
+
+Abstraction → Hides implementation details (focus on “what”).
+
+Encapsulation → Hides internal data (focus on “how to protect”).
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Class-Level & Inheritance
+
+Q11: Can a class be both abstract and final? Why/why not?
+No .
+
+Abstract class → Meant to be inherited.
+
+Final class → Cannot be inherited.
+They contradict each other.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q12: What’s the difference between extends and implements?
+
+extends → Used by a class to inherit another class.
+
+implements → Used by a class to implement an interface.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q13: Can a class extend multiple classes in Java?
+No . Java doesn’t support multiple inheritance with classes (to avoid ambiguity, “Diamond problem”).
+But a class can implement multiple interfaces.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q14: What is constructor chaining in inheritance?
+When creating a subclass object, the constructor of the superclass is called first (super()), followed by the subclass constructor.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q15: What’s the difference between an abstract class and an interface?
+
+Abstract class → Can have constructors, instance variables, abstract + concrete methods.
+
+Interface → No constructors, only constants + abstract/default/static methods.
+(From Java 8/9 onward, interfaces can also have default and private methods.)
+
+Polymorphism & Overloading/Overriding
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q16: What is method overloading?
+Defining multiple methods with the same name but different parameter lists in the same class. (Compile-time polymorphism.)
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q17: What is method overriding?
+Redefining a method of the superclass in a subclass with the same signature. (Runtime polymorphism.)
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q18: Can we override static methods in Java?
+No . Static methods belong to the class, not the object. They can be hidden (method hiding), but not truly overridden.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q19: Can we overload the main method in Java?
+Yes . You can define multiple versions of main, but only public static void main(String[] args) is called by the JVM.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q20: Can constructors be overloaded?
+Yes . Constructors can be overloaded by changing parameter lists.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Special OOPs Concepts
+
+Q21: What is the super keyword used for?
+
+To call the superclass constructor.
+
+To access superclass methods/variables that are hidden/overridden in subclass.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q22: What is the this keyword used for?
+
+Refers to the current object instance.
+
+Used to call another constructor (this()).
+
+Used to differentiate instance variables from parameters.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q23: What is the difference between an IS-A and a HAS-A relationship?
+
+IS-A → Inheritance (Dog IS-A Animal).
+
+HAS-A → Composition (Car HAS-A Engine).
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q24: What is object cloning in Java?
+Creating an exact copy of an object using clone() method. For this, the class must implement the Cloneable interface.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q25: What is the difference between deep copy and shallow copy?
+
+Shallow copy → Copies object references, not the actual objects.
+
+Deep copy → Copies objects as well as the objects they reference (full independent copy).
+
+Real-World & Tricky Questions
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q26: Why do we use OOP instead of procedural programming?
+Because OOP provides modularity, reusability, scalability, and maintainability, which procedural programming lacks.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q27: Can an abstract class have a constructor?
+Yes . Abstract classes can have constructors to initialize common fields.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q28: Can an interface extend another interface?
+Yes . Interfaces can extend one or more interfaces.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q29: Can we create an object of an abstract class?
+No . But you can have a reference of an abstract class pointing to a subclass object.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q30: Can a class implement multiple interfaces?
+Yes . This is how Java achieves multiple inheritance.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q31: What are access specifiers in OOP and how do they relate to encapsulation?
+Access specifiers (public, protected, default, private) control visibility of class members. They are used to implement encapsulation.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q32: What is multiple inheritance? Why is it not supported with classes in Java?
+Multiple inheritance = a class inheriting from multiple classes.
+Not supported in Java to avoid the Diamond Problem. Instead, interfaces provide multiple inheritance.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q33: What’s the difference between composition and inheritance?
+
+Inheritance → Reuse via “is-a” relationship.
+
+Composition → Reuse via “has-a” relationship, usually preferred (looser coupling).
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q34: Can you explain polymorphism with a real-world example?
+Example: Animal class has speak() method.
+
+Dog → speak() = Bark
+
+Cat → speak() = Meow
+Same method, different behaviors.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q35: Why is OOP important in frameworks like Spring or Hibernate?
+Because OOP concepts (encapsulation, inheritance, polymorphism, abstraction) form the 
+basis of dependency injection, proxying, modular design, and reusability in these frameworks.
+
+------------------------------------------------------------------------------------------------------------------------------------
