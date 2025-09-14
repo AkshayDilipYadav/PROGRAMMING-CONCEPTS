@@ -1,0 +1,34 @@
+Object Oriented Programming
+
+OOP is a programming paradigm that organizes software design around objects, rather than functions or logic.
+
+An object is an instance of a class, which bundles data (fields/attributes) and behaviour (methods/functions) together.
+
+OOP is a methodology for designing and building software using objects that interact with each other, modelling real-world entities,
+and encapsulating data and behaviour.
+
+There are four main pillars of OOP:
+
+1. Encapsulation
+
+Definition: Hiding the internal state of an object and providing controlled access via methods.
+
+Benefit: Improves security and maintainability.
+
+2.  Abstraction
+
+Definition: Hiding implementation details and exposing only essential functionality.
+
+Benefit: Lets you program to interfaces/abstract types, not specific implementations.
+
+3.  Inheritance
+
+Definition: Mechanism by which one class (subclass) acquires fields and methods of another class (superclass).
+
+Benefit: Promotes code reuse and a hierarchical relationship.
+
+4.  Polymorphism
+
+Definition: Ability of an object to take many forms; the same method call can behave differently depending on the object.
+
+Benefit: Enhances flexibility and extensibility.
