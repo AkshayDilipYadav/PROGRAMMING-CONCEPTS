@@ -1,0 +1,206 @@
+------------------------------------------------------------------------------------------------------------------------------------
+
+Basics & Theory
+
+Q1: What is exception handling in Java?
+Exception handling is a mechanism to handle runtime errors gracefully, ensuring the normal flow of the application continues instead of crashing abruptly.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q2: What is an exception in Java?
+An exception is an event that disrupts the normal flow of a program. In Java, exceptions are objects that represent error conditions.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q3: What is the difference between an error and an exception?
+
+An error represents serious problems (like OutOfMemoryError, StackOverflowError) that an application usually cannot recover from.
+
+An exception represents conditions (like IOException, NullPointerException) that an application can catch and handle.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q4: What are the two main types of exceptions in Java?
+
+Checked exceptions: Checked at compile time (e.g., IOException, SQLException).
+
+Unchecked exceptions: Checked at runtime, usually subclasses of RuntimeException (e.g., NullPointerException, ArrayIndexOutOfBoundsException).
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q5: What is the difference between throw and throws?
+
+throw is used to actually throw an exception from a method or block.
+
+throws is used in a method declaration to declare which exceptions the method might throw.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q6: What is the difference between final, finally, and finalize?
+
+final is a keyword used to declare constants, prevent method overriding, or prevent class inheritance.
+
+finally is a block used in exception handling to execute code regardless of whether an exception occurs.
+
+finalize() is a method called by the Garbage Collector before an object is destroyed.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Rules & Restrictions
+
+Q7: Can we handle both checked and unchecked exceptions?
+Yes, both can be handled using try-catch, but only checked exceptions must be either caught or declared in the method signature.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q8: Can we write a try block without a catch block?
+Yes, but only if you use a finally block with it.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q9: Can we write a catch block without a try block?
+No, catch cannot exist without try.
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q10: Can we have multiple catch blocks for one try?
+Yes, multiple catch blocks can be used to handle different types of exceptions.
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q11: In what order should catch blocks be written?
+Catch blocks should be written from most specific exception to most general exception, otherwise a compilation error occurs.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q12: Can we declare multiple exceptions in a single catch block?
+Yes, from Java 7 onwards, using multi-catch syntax like:
+
+catch (IOException | SQLException e) { ... }
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Code-Level Questions
+
+Q13: Example of exception handling using try-catch-finally.
+
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero");
+} finally {
+    System.out.println("Execution finished");
+}
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q14: Example of throwing a custom exception.
+
+class MyException extends Exception {
+    MyException(String message) { super(message); }
+}
+
+class Test {
+    void checkAge(int age) throws MyException {
+        if (age < 18) throw new MyException("Age must be 18+");
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Inheritance & Polymorphism
+
+Q15: Can we override a method and throw a broader exception?
+No, a subclass method cannot throw a broader checked exception than the parent method. It can throw the same or narrower exceptions.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q16: Can we override a method and throw unchecked exceptions?
+Yes, because unchecked exceptions do not need to be declared.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q17: What happens if both parent and child have exception declarations?
+The child method must either declare the same checked exception or a subclass of it; otherwise, compilation will fail.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Real-world Scenarios
+
+Q18: Why is exception handling important in real-world applications?
+It helps in ensuring the application doesn’t crash, improves debugging, logs errors properly, and provides recovery or fallback mechanisms.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q19: Why should we avoid catching generic exceptions like Exception or Throwable?
+Because it makes debugging harder, may swallow important errors, and goes against best practices. Always catch specific exceptions unless absolutely necessary.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q20: Why do frameworks like Spring or Hibernate wrap checked exceptions into runtime exceptions?
+Because forcing checked exceptions through method signatures makes the code verbose. Wrapping into runtime exceptions simplifies method declarations while still allowing handling when needed.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q21: How is exception handling used in database operations?
+Database code often throws checked exceptions like SQLException, which must be either caught or declared. Handling them properly is critical for rolling back transactions and releasing resources.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Tricky Questions
+
+Q22: What happens if an exception occurs in the finally block?
+If an exception is thrown inside finally, it can override an exception thrown in the try or catch block.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q23: Can finally block be skipped?
+Yes, finally may not execute if the JVM shuts down (like System.exit() is called) or the program crashes.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q24: What happens if both try and finally return values?
+The value from the finally block will override the value returned from try or catch.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q25: Can we rethrow an exception from a catch block?
+Yes, by using the throw keyword inside the catch block.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q26: Can constructors throw exceptions?
+Yes, constructors can declare exceptions using throws, and they can also throw exceptions at runtime.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q27: Can we catch an exception thrown by a static block?
+Yes, but only if the exception is handled inside the static block itself, otherwise it will cause a runtime error when the class is loaded.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q28: What is the difference between checked exceptions and unchecked exceptions in terms of handling?
+Checked exceptions must be either caught or declared, while unchecked exceptions don’t require explicit handling.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q29: Is it a good idea to catch RuntimeException?
+Generally no, because runtime exceptions usually represent programming errors (like NullPointerException). Instead, the code should be fixed.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Q30: What is try-with-resources in Java?
+It is a feature introduced in Java 7 that automatically closes resources like files or database connections. Example:
+
+try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
+    System.out.println(br.readLine());
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+------------------------------------------------------------------------------------------------------------------------------------
