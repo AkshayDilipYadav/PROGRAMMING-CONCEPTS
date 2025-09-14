@@ -1,0 +1,248 @@
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Basics & Theory
+
+Q1: What are generics in Java?
+Generics allow classes, interfaces, and methods to operate on typed parameters, providing compile-time type safety and eliminating the need for casting.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q2: Why were generics introduced in Java?
+To provide type safety and reusability, preventing ClassCastException at runtime and making code more readable.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q3: What is type erasure in generics?
+Generics in Java are implemented using type erasure, meaning generic type information is only available at compile time and erased at runtime.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q4: Can you use primitive types with generics?
+No, generics work only with objects. Autoboxing allows primitives (e.g., int) to be wrapped in wrapper classes (e.g., Integer).
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q5: What is the syntax of a generic class?
+
+class Box<T> {
+    private T value;
+    public void set(T value) { this.value = value; }
+    public T get() { return value; }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Generic Methods & Interfaces
+
+Q6: Can methods be generic?
+Yes, generic methods define their own type parameters.
+
+public <T> void print(T value) {
+    System.out.println(value);
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q7: Can interfaces be generic?
+Yes, for example Comparable<T> and Iterable<T>.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q8: What’s the difference between generic class and generic method?
+
+Generic class: Type parameter applies to the whole class.
+
+Generic method: Type parameter applies only to the method.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q9: What is the diamond operator in generics?
+Introduced in Java 7, <> lets the compiler infer types:
+
+List<String> list = new ArrayList<>();
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q10: What is generic constructor?
+A constructor with its own type parameter, independent of the class.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Wildcards
+
+Q11: What are wildcards in generics?
+Wildcards (?) represent an unknown type, useful for flexibility in method parameters.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q12: What is the difference between <?>, <? extends T>, and <? super T>?
+
+<?> → Unbounded wildcard (any type).
+
+<? extends T> → Upper bounded (T or its subclasses, read-only).
+
+<? super T> → Lower bounded (T or its superclasses, useful for write).
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q13: When would you use upper-bounded wildcards?
+When you only want to read data (covariant use). Example: List<? extends Number>.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q14: When would you use lower-bounded wildcards?
+When you want to write data (contravariant use). Example: List<? super Integer>.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q15: What is PECS principle in generics?
+PECS = Producer Extends, Consumer Super.
+
+Use extends when a structure produces data.
+
+Use super when it consumes data.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Real-World Usage
+
+Q16: How do generics improve Collections API?
+They allow collections to store only specific types, eliminating runtime casting.
+
+List<String> names = new ArrayList<>();
+names.add("John"); // only Strings allowed
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q17: Can generics be used in methods returning collections?
+Yes, e.g.,
+
+public <T> List<T> asList(T... elements) {
+    return Arrays.asList(elements);
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q18: How are generics used in frameworks like Spring or Hibernate?
+They provide type safety for dependency injection, repositories, and entity management (e.g., JpaRepository<User, Long>).
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q19: Why are generics important in designing libraries and APIs?
+They allow API designers to create reusable, type-safe methods/classes that work with multiple types.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q20: Can generics be used with exceptions?
+No, you cannot create generic exception classes because of type erasure.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Tricky Questions
+
+Q21: Can we use instanceof with generics?
+No, because type information is erased at runtime.
+
+if(obj instanceof List<String>) { } // Compilation error
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q22: Can we overload methods when only the generic type changes?
+No, type erasure removes generic type info, so signatures clash.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q23: Can static fields be of generic type?
+No, because static fields belong to the class, not to specific type instances.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q24: Can generic arrays be created?
+No, you cannot create arrays of generic types (e.g., new T[10]), but you can create arrays of objects and cast.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q25: Can we pass different generic types to the same class?
+Yes. Example: Box<Integer> and Box<String> are both valid instances of Box<T>.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q26: Are generics invariant in Java?
+Yes. For example, List<Number> is not a supertype of List<Integer>. That’s why wildcards exist.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q27: Can a generic class extend or implement another generic class/interface?
+Yes. Example:
+
+class MyList<T> extends ArrayList<T> { }
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q28: Can generics be nested?
+Yes. Example: Map<String, List<Integer>>.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q29: What is generic type inference?
+The compiler’s ability to automatically determine the generic type from the context (e.g., var list = List.of(1, 2, 3);).
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q30: Can generics break type safety at runtime?
+Yes, using raw types (e.g., List list = new ArrayList();) can introduce unsafe operations.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
