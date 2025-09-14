@@ -51,3 +51,38 @@ A deep copy of an object is a copy where all objects are duplicated recursively,
 The copy and the original are completely independent, including all nested objects.
 
 Modifying the copy does not affect the original.
+
+
+-------------------   Static Non Static ------------------------------------------
+
+
+A static member (variable or method) belongs to the class itself, rather than to any particular instance of the class.
+Static members are shared across all instances of the class.
+
+Declared using the static keyword.
+
+Exists once per class, not per object.
+
+Can be accessed without creating an instance of the class.
+
+Typical uses: constants, utility methods, counters, shared resources.
+
+
+
+A non-static (instance) member belongs to each individual object of the class.
+Each object has its own copy of instance variables and can access instance methods.
+
+Declared without static.
+
+Exists once per object.
+
+Can only be accessed through an object reference.
+
+Typical uses: object-specific data, behaviors.
+
+
+
+
+
+
+
