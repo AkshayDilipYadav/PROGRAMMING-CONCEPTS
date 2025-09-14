@@ -1,0 +1,300 @@
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Basics & Fundamentals
+
+Q1: What is concurrency in Java?
+Concurrency means executing multiple tasks at the same time, where tasks may progress independently and share resources.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q2: What is the difference between concurrency and parallelism?
+
+Concurrency: Tasks are executed independently, may overlap in time, not necessarily simultaneously.
+
+Parallelism: Tasks run at the same time on multiple CPU cores.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q3: What is the difference between process and thread?
+
+Process: Independent execution unit with its own memory.
+
+Thread: Lightweight unit inside a process, shares memory/resources with other threads of the same process.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q4: What is a thread in Java?
+A thread is the smallest unit of execution. In Java, it can be created by extending Thread or implementing Runnable/Callable.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q5: What are the different ways to create threads in Java?
+
+Extending the Thread class.
+
+Implementing Runnable interface.
+
+Implementing Callable interface (returns a result).
+
+Using ExecutorService or ForkJoinPool.
+
+Thread Lifecycle & Management
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q6: What are the states of a thread in Java?
+
+New → Created but not started.
+
+Runnable → Ready to run.
+
+Running → Actively executing.
+
+Waiting/Timed Waiting → Waiting for another thread.
+
+Terminated → Execution finished.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q7: What is the difference between start() and run() method?
+
+start() creates a new thread and calls run() internally.
+
+Calling run() directly executes the code in the same thread, not in a new one.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q8: What is thread priority?
+Each thread has a priority (1 to 10), but scheduling is platform-dependent, so priorities are only hints.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q9: What is a daemon thread?
+Daemon threads run in the background (like garbage collector). JVM exits when only daemon threads remain.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q10: Can we restart a thread in Java?
+No, once a thread is terminated, it cannot be restarted.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Synchronization & Locks
+
+Q11: What is synchronization in Java?
+It is the mechanism that controls access to shared resources by multiple threads, preventing data inconsistency.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q12: What is the difference between synchronized method and block?
+
+synchronized method → Locks entire method.
+
+synchronized block → Locks only a part of the method, more efficient.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q13: What is the difference between intrinsic lock and explicit lock?
+
+Intrinsic lock: Obtained via synchronized.
+
+Explicit lock: Provided by ReentrantLock and other java.util.concurrent.locks.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q14: What is deadlock in Java?
+Deadlock happens when two or more threads are waiting for each other’s locks, causing all of them to block forever.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q15: What is livelock and starvation?
+
+Livelock: Threads keep responding to each other but no progress is made.
+
+Starvation: A thread never gets CPU time because higher-priority threads dominate.
+
+Executors & Advanced Concurrency APIs
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q16: What is Executor Framework in Java?
+It is a higher-level concurrency framework that decouples task submission from execution (e.g., ExecutorService, ThreadPoolExecutor).
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q17: What is the difference between Runnable and Callable?
+
+Runnable → does not return a result, cannot throw checked exceptions.
+
+Callable → returns a result (Future<T>), can throw checked exceptions.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q18: What is Future in Java?
+Future represents the result of an asynchronous computation that can be retrieved later.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q19: What is the difference between Future and CompletableFuture?
+
+Future: Basic, blocking when retrieving results.
+
+CompletableFuture: Advanced, non-blocking, supports chaining, combining tasks, async programming.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q20: What is Fork/Join Framework?
+A framework for parallelism, splitting tasks into smaller subtasks recursively and combining results (work-stealing algorithm).
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Concurrency Utilities
+
+Q21: What are some classes in java.util.concurrent package?
+
+ExecutorService, Future, CompletableFuture, CountDownLatch, CyclicBarrier, Semaphore, ConcurrentHashMap, BlockingQueue.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q22: What is CountDownLatch?
+A synchronization aid that allows one or more threads to wait until a set of operations are completed.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q23: What is CyclicBarrier?
+A synchronization aid that allows multiple threads to wait at a barrier until all reach it, then all proceed together.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q24: What is a Semaphore?
+A concurrency tool that controls access to a resource by a fixed number of permits.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q25: What is the difference between ConcurrentHashMap and HashMap in concurrency?
+
+HashMap: Not thread-safe.
+
+ConcurrentHashMap: Thread-safe, uses lock-striping to allow concurrent reads/writes.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Tricky & Real-World Questions
+
+Q26: Can a constructor be synchronized in Java?
+No, constructors cannot be synchronized, but you can synchronize blocks inside constructors.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q27: What is the difference between wait(), notify(), and notifyAll()?
+
+wait() → Releases the lock and waits.
+
+notify() → Wakes up one waiting thread.
+
+notifyAll() → Wakes up all waiting threads.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q28: What is volatile keyword in Java concurrency?
+volatile ensures visibility of changes to variables across threads but does not guarantee atomicity.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q29: What is the difference between synchronized and volatile?
+
+synchronized: Ensures atomicity + visibility.
+
+volatile: Only ensures visibility.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q30: Why is ThreadLocal used?
+ThreadLocal provides thread-specific storage, so each thread has its own copy of a variable.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q31: Can you explain producer-consumer problem in Java?
+A classic concurrency problem where producers generate data and consumers use it, often solved with BlockingQueue or wait()/notify().
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q32: How do you detect and avoid deadlocks?
+Avoid nested locks, use lock ordering, use tryLock() with timeout, or detect cycles in thread waits.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q33: What is the difference between multitasking, multithreading, and multiprocessing?
+
+Multitasking: Multiple tasks on CPU (time-sharing).
+
+Multithreading: Multiple threads inside a process.
+
+Multiprocessing: Multiple processes running on multiple CPUs.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q34: Why should you prefer Executor Framework over creating threads manually?
+Because Executors manage thread pooling, resource reuse, and prevent thread-creation overhead.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q35: What is a race condition?
+When multiple threads access shared data and the final result depends on the timing of thread execution.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
