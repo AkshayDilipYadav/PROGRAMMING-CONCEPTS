@@ -32,3 +32,22 @@ Benefit: Promotes code reuse and a hierarchical relationship.
 Definition: Ability of an object to take many forms; the same method call can behave differently depending on the object.
 
 Benefit: Enhances flexibility and extensibility.
+
+
+
+
+
+---- Shallow Copy and Deep Copy -------------
+
+
+A shallow copy of an object is a copy where the fields of the object are copied as-is, including references.
+In other words, the top-level object is duplicated, but the objects it refers to are not; 
+they are shared between the original and the copy.
+
+Only the references are copied, not the actual objects they point to.
+Modifying a nested object in the copy will affect the original.
+
+A deep copy of an object is a copy where all objects are duplicated recursively, not just the top-level object.
+The copy and the original are completely independent, including all nested objects.
+
+Modifying the copy does not affect the original.
