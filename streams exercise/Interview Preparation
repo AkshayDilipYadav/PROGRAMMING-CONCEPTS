@@ -1,0 +1,250 @@
+----------------------------------------------------------------------------------------------------------------------
+
+
+Basics & Theory
+
+Q1: What is a Stream in Java?
+A Stream is a sequence of elements that supports functional-style operations like filtering, mapping, and reducing, without modifying the underlying data source.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q2: How is a Stream different from a Collection?
+
+A Collection stores data.
+
+A Stream does not store data; it provides a pipeline to process data.
+Collections are about data storage, Streams are about data computation.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+Q3: What are the two types of Streams in Java?
+
+Sequential Streams: Operations are executed in a single thread.
+
+Parallel Streams: Operations are divided into multiple threads using the Fork/Join framework.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+Q4: What are intermediate and terminal operations in Streams?
+
+Intermediate operations: Transform a Stream into another Stream (lazy evaluation). Example: map, filter, sorted.
+
+Terminal operations: Produce a result or side-effect and end the Stream. Example: forEach, collect, reduce.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+Q5: Are Streams lazy or eager?
+Streams are lazy – intermediate operations are not executed until a terminal operation is invoked.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Stream Operations
+
+Q6: What is the difference between map() and flatMap()?
+
+map() transforms each element into another object (1-to-1 mapping).
+
+flatMap() transforms each element into a Stream and flattens them into a single Stream (1-to-many).
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q7: What is the difference between filter() and findAny()?
+
+filter() produces a Stream of elements that match a condition.
+
+findAny() returns one element (wrapped in Optional) that matches, useful in parallel processing.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q8: What is reduce() in Streams?
+reduce() combines elements of a Stream into a single result using an accumulation function.
+Example:
+
+int sum = List.of(1,2,3,4).stream().reduce(0, Integer::sum);
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q9: Can a Stream be reused after a terminal operation?
+No, once a terminal operation is executed, the Stream is consumed and cannot be reused.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q10: What is collect() used for?
+collect() is a terminal operation that transforms a Stream into a collection, map, or summary result using Collectors.
+Example:
+
+List<String> names = people.stream()
+                           .map(Person::getName)
+                           .collect(Collectors.toList());
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Performance & Parallelism
+
+Q11: What is the difference between sequential and parallel Streams?
+
+Sequential: Single-threaded, predictable order.
+
+Parallel: Uses multiple threads internally, improves performance for large data but may add overhead for small data.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q12: When should you avoid parallel Streams?
+
+On small datasets (overhead > benefit).
+
+When thread-safety or order matters.
+
+When tasks involve I/O or shared mutable state.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q13: How do Streams achieve parallelism internally?
+They use the Fork/Join framework with a common ForkJoinPool (default size = number of CPU cores).
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+Q14: Is parallel Stream always faster than sequential Stream?
+No, performance depends on dataset size, CPU availability, and task complexity. For small or simple tasks, sequential Streams are faster.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+Real-World & Design Questions
+
+Q15: Why are Streams important in modern Java development?
+They provide a functional programming style, make code concise, readable, and encourage immutability (no side effects).
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q16: How do Streams help in processing large datasets?
+They allow lazy evaluation, parallel execution, and chained transformations without creating intermediate collections.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+Q17: Can Streams be infinite?
+Yes, using methods like Stream.generate() or Stream.iterate(). They must be bounded with limit() or another short-circuiting operation.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+Q18: What are short-circuiting operations in Streams?
+Operations that can terminate early without processing the entire Stream, e.g., limit(), findFirst(), anyMatch().
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q19: How do Streams handle null values?
+Streams generally don’t allow null values well. Stream.ofNullable() (Java 9+) can be used to safely create Streams that may contain null.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q20: Why should we avoid using Streams for everything?
+Because for simple loops, Streams may add unnecessary overhead and reduce readability for developers unfamiliar with functional programming.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Tricky Questions
+
+Q21: What happens if you call a terminal operation twice on the same Stream?
+It throws IllegalStateException because a Stream can be consumed only once.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q22: Can Streams modify the underlying Collection?
+No, Streams are meant for read-only operations. Modifying a collection while streaming it can cause ConcurrentModificationException.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q23: What’s the difference between forEach() and forEachOrdered()?
+
+forEach(): May not guarantee order in parallel Streams.
+
+forEachOrdered(): Maintains order but may reduce parallelism efficiency.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q24: Can you use a Stream to sort data?
+Yes, using sorted() intermediate operation.
+Example:
+
+list.stream().sorted().forEach(System.out::println);
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q25: What is the difference between Stream API and Iterator?
+
+Iterator: External iteration, you control traversal.
+
+Stream: Internal iteration, JVM handles traversal.
+Streams are declarative, Iterators are imperative.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q26: How does short-circuiting help performance in Streams?
+It allows avoiding processing of unnecessary elements (e.g., anyMatch() stops at the first match).
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q27: Can Streams be parallel and ordered at the same time?
+Yes, but enforcing order (forEachOrdered) in a parallel Stream may reduce performance.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q28: What is the difference between map() and peek()?
+
+map(): Transforms elements and returns a new Stream.
+
+peek(): For debugging, performs an action without changing elements.
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Q29: Why are Streams immutable?
+Because they don’t modify the data source, ensuring thread-safety and functional programming principles.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+Q30: Can collectors do grouping and partitioning?
+Yes, using Collectors.groupingBy() and Collectors.partitioningBy(). Example:
+
+Map<Boolean, List<Integer>> partition = nums.stream()
+    .collect(Collectors.partitioningBy(n -> n % 2 == 0));
+
+----------------------------------------------------------------------------------------------------------------------
