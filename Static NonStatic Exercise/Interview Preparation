@@ -1,0 +1,194 @@
+------------------------------------------------------------------------------------------------------------------------------
+
+Basics & Theory
+
+Q1: What is the difference between static and non-static in Java?
+
+Static: Belongs to the class, shared by all objects, does not need an object to access.
+
+Non-Static: Belongs to an object (instance), each object has its own copy, needs an object to access.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q2: What is a static variable?
+A static variable is shared among all instances of a class. Memory is allocated only once (class-level).
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q3: What is a non-static variable?
+A non-static (instance) variable is tied to a specific object. Each object has its own copy.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q4: What is a static method?
+A static method belongs to the class, can be called without creating an object, and cannot access instance variables/methods directly.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q5: What is a non-static method?
+A non-static method belongs to an object and can access both static and instance members.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q6: Can you summarize static vs non-static with a table?
+
+Feature	Static (Class-Level)	Non-Static (Instance-Level)
+Belongs to	Class	Object
+Memory allocation	Once per class	Once per object
+Access	ClassName.member	ObjectName.member
+Can access	Only static members	Both static + non-static
+Lifecycle	Exists till program ends	Exists till object is alive
+Class-Level Questions
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q7: Can a class be declared static in Java?
+
+Top-level classes cannot be static.
+
+Only nested (inner) classes can be declared static.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q8: What is a static nested class?
+A static nested class is an inner class that does not need an instance of the outer class. It behaves like a top-level class but is logically grouped inside another class.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q9: Can a constructor be static? Why or why not?
+No . Constructors are used to create objects, and static means "class-level" (not object-specific). Hence, they contradict each other.
+
+Method/Variable-Level Questions
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q10: Can static methods access non-static variables?
+No, because static methods don’t belong to an object. They can only access non-static variables if an object reference is explicitly provided.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q11: Can non-static methods access static variables?
+Yes, because static variables belong to the class and are always available.
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q12: Can we override a static method in Java?
+No. Static methods belong to the class, not an object. If a subclass defines a static method with the same signature, it’s called method hiding, not overriding.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q13: Can we overload a static method?
+Yes, static methods can be overloaded like any other method (same name, different parameters).
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q14: Why should variables usually not be declared static unless required?
+Because static variables are shared globally, which may cause unwanted side effects, thread-safety issues, or memory leaks.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q15: Can abstract methods be static?
+No , because abstract methods must be implemented by subclasses (object-level behavior), while static methods belong to the class.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Inheritance & Packages
+
+Q16: Can static methods be inherited?
+Yes, static methods are inherited, but they cannot be overridden (only hidden).
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q17: Can static variables be inherited?
+Yes, they are inherited, but since they are shared, all subclasses share the same copy.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q18: What happens if a parent class has a static variable and the child modifies it?
+The change will be reflected across the parent and all other children, since static variables are shared.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Real-world Scenarios
+
+Q19: Why are utility methods (e.g., Math.sqrt(), Collections.sort()) static?
+Because they don’t depend on object state. Declaring them static allows calling directly via class name without creating unnecessary objects.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q20: Why are constants usually declared as static final?
+
+static → So only one copy exists across the class.
+
+final → To make the value immutable.
+
+Example:
+
+public static final double PI = 3.14159;
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q21: Why are main methods in Java static?
+The JVM needs to call main() without creating an object of the class. Making it static allows it to be called directly by class name.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q22: Why should we avoid making everything static?
+Because:
+
+It breaks OOP principles (encapsulation, polymorphism).
+
+Makes testing harder.
+
+Causes hidden dependencies and global state issues.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Tricky Questions
+
+Q23: Can we declare a static local variable inside a method?
+No in Java (unlike C/C++). In Java, local variables are always stored on the stack and recreated every method call.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q24: Can a static block throw an exception?
+Yes, but only unchecked exceptions (RuntimeExceptions). Checked exceptions must be handled inside the block.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q25: When is a static block executed?
+At class loading time, before the main method is called.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q26: Can we make an interface method static?
+Yes, since Java 8, interfaces can have static methods (but not instance methods with implementation, except default).
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q27: Can we synchronize a static method?
+Yes, but synchronization happens on the class object, not the instance.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q28: What is the difference between static block and instance block?
+
+Static block → Runs once when the class is loaded.
+
+Instance block → Runs every time an object is created (before constructor).
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Q29: If a static variable is updated in one object, will other objects see the change?
+Yes, because static variables belong to the class, not objects.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+Q30: Can a static method use this or super?
+No, because this and super refer to object-level context, which static methods don’t have.
+
+------------------------------------------------------------------------------------------------------------------------------
