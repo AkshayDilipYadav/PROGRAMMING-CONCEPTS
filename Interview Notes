@@ -82,7 +82,54 @@ Typical uses: object-specific data, behaviors.
 
 
 
+---------------------------  Method Overriding         Method Overloading ------------------------------------------
+
+Method overloading in Java is a compile-time polymorphism feature that allows multiple methods
+in the same class (or subclass) to have the same name but 
+different parameter lists (different number, types, or order of parameters). 
+The return type alone cannot distinguish overloaded methods.
+
+Happens within the same class (or between parent and child if methods don’t conflict).
+
+Distinguished by the method signature (parameters).
+
+Decided at compile-time (static binding).
+
+Improves readability by using the same method name for related tasks.
+
+class MathUtils {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; } // Overloaded
+    int add(int a, int b, int c) { return a + b + c; } // Overloaded
+}
 
 
+Method overriding in Java is a runtime polymorphism feature that allows a subclass to provide a 
+specific implementation of a method that is already defined in its superclass. 
+The overriding method must have the same name, return type (or covariant), and parameters as the method in the superclass.
+
+
+Happens across inheritance hierarchy (parent → child).
+
+Requires an IS-A relationship (inheritance).
+
+The method in subclass replaces the superclass version when called on subclass objects.
+
+Resolved at runtime (dynamic dispatch).
+
+Marked with @Override annotation (recommended, but not mandatory).
+
+class Vehicle {
+    void start() {
+        System.out.println("Vehicle starts");
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    void start() {
+        System.out.println("Car starts with key"); // Overridden
+    }
+}
 
 
