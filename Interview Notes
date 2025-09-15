@@ -138,21 +138,22 @@ class Car extends Vehicle {
 
 ----------------------------------------      Exception Handling          --------------------------------------
 
-
+Throwable is the root superclass for all errors and exceptions in the Java language.
+Any object that can be thrown by the JVM or caught by a catch block must be a subclass of Throwable.
 
 Exception Handling in Java is a mechanism to detect, handle, 
 and recover from runtime errors (exceptions) in a controlled manner, without abruptly terminating the program.
 
 
-1. Exception
+- Exception
 
 An event that disrupts the normal flow of a program.
 
 Occurs during runtime (e.g., dividing by zero, accessing invalid array index, null reference).
 
-2. Types of Exceptions
+2. Types of throwables
 
-Checked Exceptions:
+- Checked Exceptions:
 
 Checked at compile-time.
 
@@ -160,7 +161,7 @@ Must be either caught (try-catch) or declared with throws.
 
 Example: IOException, SQLException.
 
-Unchecked Exceptions (Runtime Exceptions):
+- Unchecked Exceptions (Runtime Exceptions):
 
 Occur at runtime, not checked at compile time.
 
@@ -168,7 +169,7 @@ Typically caused by programming errors (null, out of bounds, etc.).
 
 Example: NullPointerException, ArrayIndexOutOfBoundsException.
 
-Errors:
+- Errors:
 
 Serious problems beyond programmer control.
 
@@ -186,6 +187,51 @@ finally – block that always executes (cleanup).
 throw – used to explicitly throw an exception.
 
 throws – declares exceptions a method may throw.
+
+
+------------------------------------------------      Streams  ----------------------------------------
+
+
+A Stream in Java is a sequence of elements from a source (like a Collection, array, or I/O channel)
+that supports functional-style operations to perform bulk data processing in a declarative and parallelizable way.
+
+Does not store data; it’s a pipeline for processing data.
+
+Supports operations like filtering, mapping, reducing, collecting, and grouping.
+
+Can be sequential or parallel.
+
+
+
+
+-------------------------------------------------       Lambdas -------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------- Collections -------------------------------------------
+
+
+A Collection in Java is an object that represents a group of objects (elements),
+known as its members, and provides methods to store, retrieve, manipulate, and traverse these elements efficiently.
+
+Located in java.util package.
+
+Supports dynamic data structures (like lists, sets, maps) as opposed to arrays which have fixed size.
+
+Provides standardized methods for searching, sorting, insertion, deletion, and iteration.
+
+
+
+
+
+
 
 
 
