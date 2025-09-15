@@ -238,6 +238,15 @@ Provides standardized methods for searching, sorting, insertion, deletion, and i
 
 
 
+------------------------------------------       Generics    ----------------------------------------------------------
+
+
+
+Generics in Java enable parameterized types, 
+meaning you can write classes, interfaces, and methods that operate on objects of various types
+while providing compile-time type safety and avoiding unnecessary casting.
+
+
 
 
 
