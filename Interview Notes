@@ -133,3 +133,60 @@ class Car extends Vehicle {
 }
 
 
+
+
+
+----------------------------------------      Exception Handling          --------------------------------------
+
+
+
+Exception Handling in Java is a mechanism to detect, handle, 
+and recover from runtime errors (exceptions) in a controlled manner, without abruptly terminating the program.
+
+
+1. Exception
+
+An event that disrupts the normal flow of a program.
+
+Occurs during runtime (e.g., dividing by zero, accessing invalid array index, null reference).
+
+2. Types of Exceptions
+
+Checked Exceptions:
+
+Checked at compile-time.
+
+Must be either caught (try-catch) or declared with throws.
+
+Example: IOException, SQLException.
+
+Unchecked Exceptions (Runtime Exceptions):
+
+Occur at runtime, not checked at compile time.
+
+Typically caused by programming errors (null, out of bounds, etc.).
+
+Example: NullPointerException, ArrayIndexOutOfBoundsException.
+
+Errors:
+
+Serious problems beyond programmer control.
+
+Example: OutOfMemoryError, StackOverflowError.
+
+
+3. Keywords in Exception Handling
+
+try – block of code that may throw an exception.
+
+catch – block that handles the exception.
+
+finally – block that always executes (cleanup).
+
+throw – used to explicitly throw an exception.
+
+throws – declares exceptions a method may throw.
+
+
+
+
