@@ -208,9 +208,17 @@ Can be sequential or parallel.
 
 
 
+A lambda expression in Java is a concise way to represent an anonymous function
+(a block of code with parameters and a body) that can be treated as a value, passed around, and executed later.
+
+Syntax
+(parameters) -> expression
+(parameters) -> { statements; }
 
 
-
+(a, b) -> a + b                  // adds two numbers
+s -> s.length()                  // returns string length
+() -> System.out.println("Hi")   // no parameters
 
 
 
