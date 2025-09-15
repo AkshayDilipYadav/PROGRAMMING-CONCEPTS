@@ -249,7 +249,168 @@ while providing compile-time type safety and avoiding unnecessary casting.
 
 
 
+------------------------------------------       Concurrency    ----------------------------------------------------------
+
+
+
+Concurrency is the ability of a system to deal with multiple tasks at once by interleaving their execution, even if they are not literally running at the same time.
+
+It’s about structuring a program so that multiple independent tasks can make progress.
+
+Tasks may share the same CPU core, and the operating system or runtime switches between them (context switching).
+Conclusion: Concurrency is about managing multiple tasks at the same time, not necessarily executing them simultaneously.
+
+
+Parallelism is the ability of a system to execute multiple tasks at the exact same time by utilizing multiple CPU cores or processors.
+
+It’s about physical simultaneous execution.
+
+Usually applied to speed up computation-heavy tasks.
+Conclusion: Parallelism is about doing many things at once, leveraging hardware with multiple cores.
 
 
 
 
+A process is an independent program in execution with its own memory space, resources, and system state, managed by the operating system.
+
+Each process has its own heap, stack, data, and code segment.
+
+Processes do not share memory by default → communication requires Inter-Process Communication (IPC) (e.g., sockets, files, shared memory).
+
+Processes are more heavyweight than threads.
+
+Example: Running IntelliJ IDEA and Google Chrome at the same time → each is a separate process.
+
+Conclusion: A process is an independent execution unit with its own memory and resources.
+
+
+A thread is the smallest unit of execution within a process.
+
+Threads of the same process share memory (heap) and resources, but each thread has its own stack and program counter.
+
+Threads are more lightweight than processes.
+
+Easier and faster to create/switch compared to processes.
+
+Example: Inside Chrome, multiple threads may run — one for rendering a webpage, another for handling user input, another for network requests.
+
+Conclusion: A thread is a lightweight execution unit inside a process that shares memory with other threads in the same process.
+
+
+
+A race condition occurs when the behavior or outcome of a program depends on the timing or interleaving of threads/processes accessing shared resources concurrently.
+
+It happens when two or more threads try to read/write a shared variable or resource at the same time.
+
+If the program’s correctness depends on the order of execution, and that order is not guaranteed → race condition.
+
+Results: unpredictable values, corrupted data, or crashes.
+Conclusion: A race condition is a concurrency bug where multiple threads compete to access/modify shared data, causing inconsistent or unexpected results.
+
+
+In Java, synchronized is a keyword that ensures that only one thread at a time can execute a block of code or a method that is synchronized on the same object/monitor lock.
+
+It prevents race conditions by controlling access to shared resources.
+
+When a thread enters a synchronized block/method, it acquires the lock (monitor) of the object.
+
+Other threads trying to enter a synchronized block on the same object must wait until the lock is released.
+Conclusion: synchronized provides mutual exclusion and visibility guarantees, making multithreaded code safe.
+
+
+
+Thread Life Cycle -
+
+NEW  →  RUNNABLE  →  RUNNING  →  (WAITING / TIMED_WAITING / BLOCKED)  →  TERMINATED
+
+
+1. New (Created State)
+
+A thread object is created using the Thread class but not yet started.
+
+It is in the NEW state.
+
+Thread t = new Thread(() -> System.out.println("Running"));
+
+Here, the thread t is in the NEW state.
+
+Moves to Runnable when start() is called.
+
+
+2. Runnable (Ready State)
+
+After calling start(), the thread becomes Runnable.
+
+It is eligible to run, but the thread scheduler decides when it actually runs.
+
+t.start(); // Thread is now RUNNABLE
+
+From here, it may enter Running.
+
+
+3. Running (Active State)
+
+The thread is actually executing its task (run() method).
+
+Only one thread per core can be in Running state at a time.
+After completion or interruption, it can go back to Runnable, Waiting, or Terminated.
+
+
+
+4. Waiting (Indefinite Wait)
+
+Thread waits indefinitely until another thread signals it (using notify() or notifyAll()).
+
+It cannot come back automatically; it needs a signal.
+
+synchronized(lock) {
+    lock.wait(); // Thread is now WAITING
+}
+
+Returns to Runnable when notified.
+
+
+5. Timed Waiting
+
+Thread waits for a specific amount of time, after which it becomes Runnable again.
+
+Example: sleep(ms), join(ms), wait(ms).
+
+Thread.sleep(1000); // TIMED_WAITING for 1 second
+
+
+
+6. Blocked
+
+A thread is blocked when it tries to enter a synchronized block/method but another thread already holds the lock.
+
+Once the lock is released, it becomes Runnable.
+
+
+7. Terminated (Dead State)
+
+A thread completes execution or is stopped.
+
+Once in this state, it cannot be restarted.
+
+t.join(); // Waits for thread to die
+
+
+THREAD SAFETY
+
+A class, method, or piece of code is said to be thread-safe if it behaves correctly
+when accessed from multiple threads simultaneously, without producing race conditions, corrupted data, or unexpected results.
+
+Conclusion: Thread safety means that multiple threads can safely use the same code 
+or object at the same time without breaking program correctness.
+
+
+VOLATILE
+
+a variable declared as volatile is a shared variable that guarantees:
+
+Visibility → Any write by one thread is immediately visible to other threads.
+
+Ordering (limited) → Prevents certain compiler/CPU optimizations that could reorder reads/writes.
+
+Conclusion: volatile ensures that threads always see the most recent value of a variable, instead of a cached or stale value.
