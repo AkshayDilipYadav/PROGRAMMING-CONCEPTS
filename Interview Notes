@@ -138,6 +138,8 @@ class Car extends Vehicle {
 
 ----------------------------------------      Exception Handling          --------------------------------------
 
+
+
 Throwable is the root superclass for all errors and exceptions in the Java language.
 Any object that can be thrown by the JVM or caught by a catch block must be a subclass of Throwable.
 
@@ -187,6 +189,7 @@ finally – block that always executes (cleanup).
 throw – used to explicitly throw an exception.
 
 throws – declares exceptions a method may throw.
+
 
 
 ------------------------------------------------      Streams  ----------------------------------------
