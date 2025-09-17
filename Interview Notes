@@ -192,37 +192,37 @@ throws – declares exceptions a method may throw.
 
 
 
-------------------------------------------------      Streams  ----------------------------------------
-
-
-A Stream in Java is a sequence of elements from a source (like a Collection, array, or I/O channel)
-that supports functional-style operations to perform bulk data processing in a declarative and parallelizable way.
-
-Does not store data; it’s a pipeline for processing data.
-
-Supports operations like filtering, mapping, reducing, collecting, and grouping.
-
-Can be sequential or parallel.
 
 
 
 
--------------------------------------------------       Lambdas -------------------------------------------------
 
 
 
-A lambda expression in Java is a concise way to represent an anonymous function
-(a block of code with parameters and a body) that can be treated as a value, passed around, and executed later.
 
-Syntax
-(parameters) -> expression
-(parameters) -> { statements; }
+------------------------------------------       Generics    ----------------------------------------------------------
 
 
-(a, b) -> a + b                  // adds two numbers
-s -> s.length()                  // returns string length
-() -> System.out.println("Hi")   // no parameters
 
+Generics in Java enable parameterized types, 
+meaning you can write classes, interfaces, and methods that operate on objects of various types
+while providing compile-time type safety and avoiding unnecessary casting.
+
+
+Types of Generics: 
+
+1. BAsed on where they are used
+
+a. Generic Classes
+b. Generic Interfaces
+c. Generic Methods
+d. Generic Constructors
+
+2. Based on Bounds and Wildcards
+
+a. Unbounded Generics
+b. Bounded Generics
+c. Wildcards
 
 
 
@@ -238,18 +238,179 @@ Supports dynamic data structures (like lists, sets, maps) as opposed to arrays w
 
 Provides standardized methods for searching, sorting, insertion, deletion, and iteration.
 
+- Collections types: 
+
+1. List
+2. Set
+3. Queue
+4. Map
+
+- Thread-Safety Classification: 
+Thread-Safe (Synchronized) - Vector, Stack, Hashtable, ConcurrentHashMap
+Not Thread-Safe - ArrayList, LinkedList, HashMap, HashSet
 
 
 
-------------------------------------------       Generics    ----------------------------------------------------------
+
+------------------------------------------------      Streams  ----------------------------------------
+
+
+A Stream in Java is a sequence of elements from a source (like a Collection, array, or I/O channel)
+that supports functional-style operations to perform bulk data processing in a declarative and parallelizable way.
+
+Does not store data; it’s a pipeline for processing data.
+
+Supports operations like filtering, mapping, reducing, collecting, and grouping.
+
+Can be sequential or parallel.
+
+- Types of Streams: 
+
+1. By Source
+
+Collection streams → list.stream(), set.stream().
+
+Array streams → Arrays.stream(arr).
+
+Stream.of() → manually create.
+
+File/I/O streams → Files.lines(Paths.get("file.txt")).
+
+Primitive streams → IntStream, LongStream, DoubleStream.
+
+2. By Execution Mode
+
+- Sequential Stream (default)
+
+Runs operations on a single thread.
+
+list.stream()
+
+
+- Parallel Stream
+
+Divides work across multiple threads using Fork/Join framework.
+
+list.parallelStream()
+
+3. By Operation Type: 
+
+- Intermediate Operations
+
+Return another stream.
+
+Lazy (executed only when terminal operation is called).
+
+Examples:
+
+filter() → keeps elements based on condition.
+
+map() → transforms elements.
+
+sorted() → sorts elements.
+
+distinct() → removes duplicates.
+
+limit(n) / skip(n).
+
+- Terminal Operations
+
+Produce a result (non-stream).
+
+Trigger execution of the pipeline.
+
+Examples:
+
+forEach() → perform action on each element.
+
+collect() → collect into List, Set, Map.
+
+reduce() → reduce to a single value.
+
+count(), min(), max(), anyMatch(), allMatch().
+
+- Short-Circuiting Operations
+
+Special category:
+
+Intermediate: limit(), skip().
+
+Terminal: findFirst(), findAny(), anyMatch(), allMatch().
+ They don’t need to process the whole stream.
 
 
 
-Generics in Java enable parameterized types, 
-meaning you can write classes, interfaces, and methods that operate on objects of various types
-while providing compile-time type safety and avoiding unnecessary casting.
+
+-------------------------------------------------       Lambdas -------------------------------------------------
 
 
+
+A lambda expression in Java is a concise way to represent an anonymous function
+(a block of code with parameters and a body) that can be treated as a value, passed around, and executed later.
+
+Syntax
+(parameters) -> expression
+(parameters) -> { statements; }
+
+No Parameters
+
+() -> System.out.println("Hello");
+
+Single Parameter
+
+x -> x * x
+
+Multiple Parameters
+
+(a, b) -> a + b
+
+With Block Body
+
+(a, b) -> {
+    int sum = a + b;
+    return sum;
+}
+
+With Return Statement (optional for single expressions)
+
+(x, y) -> x > y ? x : y
+
+
+- CLassification of Lambdas based on Functional Interfaces
+
+Supplier (no input, returns something)
+Supplier<Double> randomValue = () -> Math.random();
+System.out.println(randomValue.get());
+
+- Consumer (takes input, no return)
+Consumer<String> printer = s -> System.out.println(s);
+printer.accept("Hello World");
+
+- Function (takes input, returns output)
+Function<Integer, String> intToString = n -> "Number: " + n;
+System.out.println(intToString.apply(5));
+
+- Predicate (returns boolean)
+Predicate<Integer> isEven = n -> n % 2 == 0;
+System.out.println(isEven.test(10)); // true
+
+- BiFunction, BiConsumer, BiPredicate (two inputs)
+BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
+System.out.println(add.apply(5, 3)); // 8
+
+- Lambdas based on Method References (::)
+
+Shortcut to refer to methods instead of writing lambdas:
+
+list.forEach(System.out::println);           Equivalent to:       list.forEach(x -> System.out.println(x));
+
+Types:
+
+Reference to static method → Class::staticMethod
+
+Reference to instance method → obj::instanceMethod
+
+Reference to constructor → Class::new
 
 
 ------------------------------------------       Concurrency    ----------------------------------------------------------
