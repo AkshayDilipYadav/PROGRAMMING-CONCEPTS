@@ -1,0 +1,33 @@
+- Synchronization Primitives
+
+Low-level tools used to control access to shared resources in concurrent systems.
+
+Examples: locks, mutexes, semaphores, monitors.
+
+- Race Condition
+
+When multiple threads access and modify shared data simultaneously without synchronization, leading to unpredictable results.
+
+- Critical Section Problem
+
+The problem of ensuring that only one thread executes a critical section (shared data manipulation) at a time.
+
+- Locks & Mutexes
+
+Lock/Mutex: A synchronization primitive ensuring only one thread can access the resource at a time.
+
+Mutex = mutual exclusion.
+
+- -Semaphores
+
+A signaling mechanism, generalization of locks.
+
+Binary semaphore: Like a mutex (0 or 1).
+
+Counting semaphore: Allows multiple threads up to a fixed count.
+
+- Monitors & Condition Variables
+
+A high-level abstraction that encapsulates shared data + operations + synchronization.
+
+Condition variables allow threads to wait/signal inside monitors (e.g., wait(), notify(), notifyAll() in Java).
