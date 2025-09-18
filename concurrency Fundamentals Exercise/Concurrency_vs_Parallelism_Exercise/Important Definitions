@@ -1,1 +1,15 @@
 
+Concurrency
+
+Definition: Concurrency is the ability of a system to manage multiple tasks at the same time, but not necessarily simultaneously.
+
+In Java: Multiple threads or tasks can make progress independently (time-slicing on a single CPU), even if only one executes at a time.
+
+
+Parallelism
+
+Definition: Parallelism is the simultaneous execution of multiple tasks on multiple processors or cores.
+
+In Java: Multiple threads execute at the same exact time on multiple cores.
+
+Key point: All parallel programs are concurrent, but not all concurrent programs are parallel.
