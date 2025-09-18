@@ -1,0 +1,39 @@
+- Thread Pools
+
+A pool of pre-created worker threads that can be reused to execute tasks.
+
+Saves cost of creating/destroying threads repeatedly.
+
+In Java: managed by ExecutorService.
+
+- Executors (Java)
+
+Framework for asynchronous task execution decoupled from thread management.
+
+Example: Executors.newFixedThreadPool(n).
+
+- Schedulers (RxJava, Reactor)
+
+Abstractions in reactive programming frameworks for controlling when and where (on which thread) tasks execute.
+
+Example: .subscribeOn(Schedulers.io()).
+
+- Futures & Promises
+
+Future: A placeholder for a result that will be available later.
+
+Promise (CompletableFuture in Java): Allows setting and chaining of asynchronous results.
+
+- Async/Await syntax (modern languages)
+
+High-level syntax sugar (in JS, Kotlin, Python, C#) for writing asynchronous code that looks synchronous.
+
+Java doesn’t have direct async/await, but CompletableFuture provides similar semantics.
+
+- Fork/Join Framework
+
+Java framework for divide-and-conquer parallelism.
+
+Splits tasks recursively into subtasks (fork) and merges results (join).
+
+Optimized for parallel processing (uses work-stealing).
