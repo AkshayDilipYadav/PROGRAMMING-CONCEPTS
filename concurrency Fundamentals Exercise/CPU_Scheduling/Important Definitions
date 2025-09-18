@@ -1,0 +1,27 @@
+CPU Scheduling
+
+Definition: CPU scheduling is the process by which the OS decides which ready process in the queue gets to use the CPU next.
+
+Purpose: Maximize CPU utilization, throughput, and fairness.
+
+Context Switching
+
+Definition: Context switching is the act of saving the state of a running process/thread and loading the state of the next process/thread scheduled to run.
+
+Overhead: Context switches take time, reducing CPU efficiency.
+
+
+
+Preemptive	- CPU can be taken away from a process if a higher priority process arrives.
+Non-preemptive - 	Once a process starts, it runs to completion before the next one executes.
+
+
+Time Slicing
+
+Definition: Time slicing is dividing CPU time into small intervals (quantum) to allow multiple processes/threads to run concurrently in a preemptive system.
+
+
+
+FIFO / FCFS	First-Come-First-Serve: processes run in the order they arrive.
+Round Robin (RR)	Each process gets a fixed time quantum; cycles through the ready queue.
+Priority	CPU given to the highest priority process; can be preemptive or non-preemptive
