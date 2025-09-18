@@ -1,0 +1,31 @@
+ - Shared Memory vs Message Passing
+
+Shared Memory: Threads/processes share the same memory space and communicate by reading/writing variables.
+
+Message Passing: Processes/threads communicate by explicitly sending messages (e.g., channels, queues). No direct shared state.
+
+- Volatile Variables
+
+A Java keyword that ensures:
+
+A variable is always read from and written to main memory (not cached in CPU registers or thread-local caches).
+
+Provides visibility guarantee (changes by one thread are immediately visible to others).
+
+Does not guarantee atomicity for compound actions (x++).
+
+- Visibility Issues & Caching
+
+Modern CPUs + JVM use caches for speed.
+
+Threads may see stale values if changes are cached and not flushed to main memory.
+
+This is the visibility problem in multithreading.
+
+-  False Sharing
+
+Performance issue, not correctness.
+
+Occurs when multiple threads update different variables that happen to sit on the same CPU cache line.
+
+Causes unnecessary cache invalidations, slowing performance.
