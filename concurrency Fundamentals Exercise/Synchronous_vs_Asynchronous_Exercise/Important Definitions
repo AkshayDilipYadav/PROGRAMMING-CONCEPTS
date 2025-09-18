@@ -1,0 +1,14 @@
+Synchronous Execution
+
+Definition: In synchronous execution, tasks are performed one after another. Each task must complete before the next task starts.
+
+In Java: A method call that blocks the caller until it finishes is synchronous.
+
+
+Asynchronous Execution
+
+Definition: In asynchronous execution, tasks are initiated and the caller does not wait for them to complete. Tasks may complete later, independently of the caller.
+
+In Java: Tasks run in a separate thread, or with CompletableFuture, ExecutorService, or other async APIs.
+
+Key point: Synchronous = blocking, Asynchronous = non-blocking
