@@ -1,3 +1,19 @@
+
+
+Synchronization Primitives
+
+Race Conditions → When two threads access shared data without proper synchronization.
+
+Critical Section Problem
+
+Locks & Mutexes
+
+Semaphores (counting & binary)
+
+Monitors & Condition Variables
+
+------------------------------------------------------------------------------------------------------
+
 - Synchronization Primitives
 
 Low-level tools used to control access to shared resources in concurrent systems.
