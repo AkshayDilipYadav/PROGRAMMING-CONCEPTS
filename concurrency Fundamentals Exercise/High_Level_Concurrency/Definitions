@@ -1,3 +1,19 @@
+High-level Concurrency Abstractions
+
+Thread Pools
+
+Executors (Java), Schedulers (RxJava, Reactor)
+
+Futures & Promises
+
+Async/Await syntax (modern languages)
+
+Fork/Join Framework (divide-and-conquer tasks)
+
+------------------------------------------------------------------------------------------------------
+
+
+
 - Thread Pools
 
 A pool of pre-created worker threads that can be reused to execute tasks.
