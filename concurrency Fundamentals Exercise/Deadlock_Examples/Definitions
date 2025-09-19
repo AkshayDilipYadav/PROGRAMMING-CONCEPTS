@@ -1,0 +1,37 @@
+- Deadlock
+
+A situation where two or more tasks are blocked forever, waiting on resources that each other holds.
+
+Example: Thread A holds lock1 and wants lock2; Thread B holds lock2 and wants lock1.
+
+- Livelock
+
+Tasks are not blocked but keep changing state in response to each other → no progress.
+
+Example: Two people in a hallway keep stepping aside to avoid each other, endlessly.
+
+- Starvation
+
+A task never gets CPU or resources because higher-priority tasks monopolize them.
+
+Example: Low-priority thread always preempted by high-priority ones.
+
+
+
+- Deadlock Handling Approaches
+
+- Prevention
+
+Ensure at least one necessary condition for deadlock never holds.
+
+Example: Impose an ordering on locks.
+
+- Avoidance (Banker’s Algorithm)
+
+Dynamically check if granting a resource request keeps the system in a safe state.
+
+If unsafe → deny request.
+
+- Detection & Recovery
+
+Allow deadlocks to occur, then periodically check and recover (e.g., kill one process).
