@@ -1,3 +1,19 @@
+Concurrency Patterns
+
+Producer–Consumer Problem
+
+Readers–Writers Problem
+
+Dining Philosophers Problem
+
+Barrier Synchronization
+
+Thread-safe Collections
+
+Immutable Objects as concurrency tools
+
+------------------------------------------------------------------------------------------------------
+
 - Producer–Consumer Problem
 
 Classic concurrency problem.
