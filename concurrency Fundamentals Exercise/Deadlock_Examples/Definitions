@@ -1,3 +1,23 @@
+. Deadlocks, Livelocks, and Starvation
+
+Deadlock → Tasks waiting forever for each other.
+
+Livelock → Tasks keep changing state but make no progress.
+
+Starvation → A task never gets CPU time.
+
+Deadlock prevention, avoidance (Banker’s Algorithm), and detection.
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+
+
 - Deadlock
 
 A situation where two or more tasks are blocked forever, waiting on resources that each other holds.
