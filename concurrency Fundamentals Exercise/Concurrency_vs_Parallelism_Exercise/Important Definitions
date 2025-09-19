@@ -1,3 +1,12 @@
+Concurrency vs Parallelism
+
+Concurrency: Structuring a program as independent tasks (not necessarily simultaneous).
+
+Parallelism: Actually running tasks at the same time on multiple cores.
+
+
+------------------------------------------------------------------------------------------------------
+
 
 Concurrency
 
