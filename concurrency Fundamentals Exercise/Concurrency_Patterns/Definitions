@@ -14,19 +14,24 @@ Immutable Objects as concurrency tools
 
 ------------------------------------------------------------------------------------------------------
 
-- Producer–Consumer Problem
+- 1.  Producer–Consumer Problem
 
-Classic concurrency problem.
+Classic concurrency problem: Producer–Consumer = classic concurrency problem where producers generate data, consumers use it, and both share a limited buffer.
 
 Producers generate data and place it into a buffer.
 
 Consumers remove data from the buffer.
 
+The producer must wait if the buffer is full (no space to add more).
+The consumer must wait if the buffer is empty (nothing to consume).
+
 Requires synchronization to avoid race conditions (e.g., two consumers taking the same item).
 
-- Readers–Writers Problem
+- 2. Classic Readers–Writers Problem
 
-Multiple threads need access to shared data.
+Multiple threads need access to shared data (like a database, file, or variable).
+
+Without proper synchronization: A reader might read data while a writer is updating it, causing inconsistent or corrupted results. Multiple writers could overwrite each other’s changes.
 
 Readers can read simultaneously.
 
@@ -34,15 +39,15 @@ Writers require exclusive access.
 
 Balancing fairness between readers and writers is key.
 
-- Dining Philosophers Problem
+- 3. Classic  Dining Philosophers Problem
 
 Five philosophers sitting at a round table, alternating between thinking and eating.
 
 Each needs two forks (shared resources) to eat.
 
-Illustrates deadlock, starvation, and resource contention.
+Illustrates deadlock, starvation, and resource contention. Concurrency Control → need for careful resource allocation. Synchronization Techniques → ordering, mutexes, semaphores, arbiters.
 
-- Barrier Synchronization
+- 4.  Barrier Synchronization
 
 A barrier makes threads wait until all have reached a certain point.
 
@@ -50,15 +55,21 @@ Once all threads arrive, they continue execution together.
 
 Example: parallel algorithms where tasks must sync between phases.
 
-- Thread-safe Collections
+- 5. Thread-safe Collections
 
 Collections (lists, maps, queues) that can be accessed safely by multiple threads.
+
+A thread-safe collection is a collection class (like a List, Map, Set, or Queue) that can be safely accessed and modified by multiple threads at the same time without causing:
+
+Race conditions (two threads updating data inconsistently).
+Data corruption (lost updates, half-written structures).
+Unexpected behavior (exceptions like ConcurrentModificationException).
 
 Java provides:
 
 ConcurrentHashMap, ConcurrentLinkedQueue, CopyOnWriteArrayList.
 
-- Immutable Objects as Concurrency Tools
+- 6. Immutable Objects as Concurrency Tools
 
 Objects that cannot be modified after creation.
 
