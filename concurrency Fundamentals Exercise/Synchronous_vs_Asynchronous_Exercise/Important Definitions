@@ -1,3 +1,13 @@
+Synchronous vs Asynchronous Execution
+
+Sync: One task must finish before the next begins.
+
+Async: Tasks can proceed without waiting for others.
+
+
+------------------------------------------------------------------------------------------------------
+
+
 Synchronous Execution
 
 Definition: In synchronous execution, tasks are performed one after another. Each task must complete before the next task starts.
