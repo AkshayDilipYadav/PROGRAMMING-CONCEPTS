@@ -1,4 +1,20 @@
- - Shared Memory vs Message Passing
+Memory & Concurrency Basics
+
+Shared memory vs Message passing
+
+Volatile variables
+
+Visibility issues & caching
+
+False sharing
+
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+- Shared Memory vs Message Passing
 
 Shared Memory: Threads/processes share the same memory space and communicate by reading/writing variables.
 
