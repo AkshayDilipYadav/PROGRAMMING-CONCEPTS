@@ -1,0 +1,51 @@
+- Producer–Consumer Problem
+
+Classic concurrency problem.
+
+Producers generate data and place it into a buffer.
+
+Consumers remove data from the buffer.
+
+Requires synchronization to avoid race conditions (e.g., two consumers taking the same item).
+
+- Readers–Writers Problem
+
+Multiple threads need access to shared data.
+
+Readers can read simultaneously.
+
+Writers require exclusive access.
+
+Balancing fairness between readers and writers is key.
+
+- Dining Philosophers Problem
+
+Five philosophers sitting at a round table, alternating between thinking and eating.
+
+Each needs two forks (shared resources) to eat.
+
+Illustrates deadlock, starvation, and resource contention.
+
+- Barrier Synchronization
+
+A barrier makes threads wait until all have reached a certain point.
+
+Once all threads arrive, they continue execution together.
+
+Example: parallel algorithms where tasks must sync between phases.
+
+- Thread-safe Collections
+
+Collections (lists, maps, queues) that can be accessed safely by multiple threads.
+
+Java provides:
+
+ConcurrentHashMap, ConcurrentLinkedQueue, CopyOnWriteArrayList.
+
+- Immutable Objects as Concurrency Tools
+
+Objects that cannot be modified after creation.
+
+Naturally thread-safe since their state cannot change.
+
+Used in functional programming and message-passing systems.
