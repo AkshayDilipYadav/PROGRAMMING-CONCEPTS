@@ -12,30 +12,73 @@ Scheduler policies (Round Robin, Priority, FIFO)
 ------------------------------------------------------------------------------------------------------
 
 
-CPU Scheduling
+1. CPU Scheduling
 
 Definition: CPU scheduling is the process by which the OS decides which ready process in the queue gets to use the CPU next.
 
 Purpose: Maximize CPU utilization, throughput, and fairness.
 
-Context Switching
+How CPU Scheduling Works
+
+a. Ready Queue: All runnable processes/threads (not blocked, not finished) are put in a queue.
+b. Scheduler: The OS scheduler picks one thread from the queue based on some scheduling algorithm (FCFS, Round Robin, Priority, etc.).
+c. Context Switching: When switching between threads, the CPU saves the state of the old thread and loads the state of the new thread. This allows concurrency even on a single-core CPU.
+
+2. Context Switching
 
 Definition: Context switching is the act of saving the state of a running process/thread and loading the state of the next process/thread scheduled to run.
 
 Overhead: Context switches take time, reducing CPU efficiency.
 
+- Key players-
+1. Process Control Block PCB / Thread Control Block TCB: A data structure the OS uses to store all the information (context) about a process/thread.
+2. scheduler: Decides which process/thread to run next.
+3. Dispatcher: Actually performs the context switch: saves the old state, loads the new state.
 
+
+
+
+3. What is Scheduling?
 
 Preemptive	- CPU can be taken away from a process if a higher priority process arrives.
+Examples:
+First Come, First Served (FCFS) → Processes run in arrival order.
+Shortest Job First (SJF) → Process with the shortest burst time runs first.
+
 Non-preemptive - 	Once a process starts, it runs to completion before the next one executes.
 
+Examples:
 
-Time Slicing
+Round Robin (RR) → Each process gets a fixed time slice (quantum), then goes to the back of the queue.
+Shortest Remaining Time First (SRTF) → Process with the shortest remaining CPU burst gets CPU.
+Priority Scheduling → Higher-priority process preempts lower-priority ones.
+Multilevel Queue → Different queues for system, interactive, batch processes.
+Multilevel Feedback Queue (MLFQ) → Processes can move between queues (used in Linux, Windows).
+
+
+4. Time Slicing
 
 Definition: Time slicing is dividing CPU time into small intervals (quantum) to allow multiple processes/threads to run concurrently in a preemptive system.
 
+Suppose:
+Time slice = 5 ms
+Three threads: T1, T2, T3
+Execution might look like this: | T1 (0–5ms) | T2 (5–10ms) | T3 (10–15ms) | T1 (15–20ms) | T2 (20–25ms) |
 
+5. Scheduler Policies -
+
+Schedulers are designed to balance multiple goals:
+Fairness → Every process gets a chance, no starvation.
+Efficiency → CPU is always busy (no idle time).
+Responsiveness → Interactive programs (UI, keyboard, mouse) should feel fast.
+Throughput → Maximize number of tasks completed per unit time.
+Turnaround/Waiting time → Minimize delays for tasks.
+
+Common Scheduling Policies: 
 
 FIFO / FCFS	First-Come-First-Serve: processes run in the order they arrive.
+Shortest Job Next (SJN) / Shortest Job First (SJF): Process with the smallest execution time is picked first.
 Round Robin (RR)	Each process gets a fixed time quantum; cycles through the ready queue.
-Priority	CPU given to the highest priority process; can be preemptive or non-preemptive
+Priority	CPU given to the highest priority process; can be preemptive or non-preemptive.
+Multilevel Queue Scheduling: Processes are divided into categories (system processes, interactive, batch).
+
