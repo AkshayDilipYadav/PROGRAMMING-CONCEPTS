@@ -1,3 +1,17 @@
+
+CPU Scheduling (OS Foundations)
+
+Context switching
+
+Preemptive vs Non-preemptive scheduling
+
+Time slicing
+
+Scheduler policies (Round Robin, Priority, FIFO)
+
+------------------------------------------------------------------------------------------------------
+
+
 CPU Scheduling
 
 Definition: CPU scheduling is the process by which the OS decides which ready process in the queue gets to use the CPU next.
