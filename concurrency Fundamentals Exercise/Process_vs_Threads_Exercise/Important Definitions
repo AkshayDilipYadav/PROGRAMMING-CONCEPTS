@@ -1,3 +1,12 @@
+Process vs Thread
+
+Process: Independent execution unit with its own memory space.
+
+Thread: Lightweight execution unit within a process, shares memory with other threads.
+
+------------------------------------------------------------------------------------------------------
+
+
 Process → An independent program running on your computer. It has its own memory and resources.
 
 In Java: The JVM (Java Virtual Machine) is the process when you run your program.
