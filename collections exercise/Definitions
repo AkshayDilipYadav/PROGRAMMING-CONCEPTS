@@ -1,0 +1,62 @@
+-----------------------------------------------------------  Collections interface  -----------------------------------------------------------
+
+A Collection represents a group of objects, known as elements.
+It defines basic operations like adding, removing, and iterating over elements.
+It is the root interface of the Java Collections Framework (excluding Map).
+
+Have subinterfaces as List, Set, Queue.
+
+
+
+-----------------------------------------------------------       LIST Interface -----------------------------------------------------------
+
+A List is an ordered collection (also called a sequence) that allows duplicate elements, indexed access, and controlled insertion at any position.
+
+Key points in the definitions: 
+
+1. Ordered Collections: Elements maintain the order in which they are inserted.
+2. Indexed access: Each element has an integer index (starting from 0). You can get, set, add, or remove elements at specific positions.
+3. Allows duplicates: Unlike Set, a List can contain multiple occurrences of the same element.
+4. Resizable and flexible: Implementations like ArrayList and LinkedList can grow or shrink dynamically.
+5. Part of Collections Framework: Extends the Collection interface. Provides all generic collection operations plus list-specific methods.
+
+
+A List is an ordered, indexable, and possibly duplicate-containing collection of elements.
+
+Classes that implement List are: ArrayList, LinkedList, Vector, Stack
+
+
+-----------------------------------------------------------       Set Interface -----------------------------------------------------------
+
+A Set is a collection that contains no duplicate elements. It models the mathematical concept of a set.
+
+Key Points: 
+
+1. No duplicates: Each element in a Set is unique. If you try to add a duplicate, it will be ignored.
+2. Order: By default (HashSet), no guaranteed order of elements. Some implementations maintain order: LinkedHashSet → insertion order. TreeSet → sorted order (natural order or comparator)
+3. No indexed access: Unlike List, you cannot get elements by index. You iterate over elements using an iterator or enhanced for-loop.
+4. Resizable and flexible: Implementations can grow or shrink dynamically, just like ArrayList.
+5. Part of Collections Framework: Extends the Collection interface. Provides generic collection operations (add(), remove(), contains()), but no index-specific methods.
+
+A Set is an unordered (or optionally ordered), unique collection of elements.
+
+Classes that implement Set are: HashSet, LinkedHashSet, TreeSet, EnumSet, CopyOnWriteArraySet
+
+-----------------------------------------------------------       Queue Interface -----------------------------------------------------------
+
+A Queue is a collection designed for holding elements prior to processing, typically in a first-in-first-out (FIFO) manner.
+
+Key points: 
+
+1. Order: Elements are usually processed in the order they were added (FIFO). Some implementations, like PriorityQueue, order elements according to priority.
+2. Duplicate elements allowed: Unlike Set, a queue can contain duplicate elements.
+3. Access rules: You don’t access elements by index. Main operations: offer(E e) → add element to the queue.
+poll() → remove and return the head (first element). peek() → look at the head without removing
+4. Resizable and flexible: Implementations like LinkedList or ArrayDeque grow/shrink dynamically.
+5. Part of Collections Framework: Extends Collection interface. Provides generic collection operations plus queue-specific methods.
+
+
+A Queue is an ordered collection where elements are processed in a specific order (usually FIFO), duplicates allowed.
+
+Classes that implement Queue are: LinkedList, PriorityQueue, ArrayDeque, ConcurrentLinkedQueue, LinkedBlockingQueue, PriorityBlockingQueue
+
