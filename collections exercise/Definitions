@@ -1,4 +1,4 @@
------------------------------------------------------------  Collections interface  -----------------------------------------------------------
+-----------------------------------------------------------  Collection interface  -----------------------------------------------------------
 
 A Collection represents a group of objects, known as elements.
 It defines basic operations like adding, removing, and iterating over elements.
@@ -85,4 +85,28 @@ Each element (or node) can be stored anywhere in memory, and elements are connec
 Non-contiguous = elements stored anywhere, linked via references → easy insertion, slower access.
 
 
+---------------------------------------------------------------------     MAP Interface ---------------------------------------------------------------------
+
+A Map is a collection object that maps keys to values, where each key is unique and maps to exactly one value.
+Maps are part of the Java Collections Framework but do not extend the Collection interface, because they store key-value pairs instead of individual elements.
+
+
+---------------------------------------------------------------------    Collections Framework Hierarchy ---------------------------------------------------------------------
+
+Java Collections Framework is a unified architecture for representing and manipulating collections of objects.
+
+Java Collections Framework = Collection + Map
+
+Root interfaces:
+Collection – represents a group of individual elements.
+Map – represents key-value pairs.
+
+Java Collections Framework
+ ├─ Collection (interface)
+ │     ├─ List
+ │     ├─ Set
+ │     └─ Queue
+ └─ Map (interface)
+       ├─ SortedMap
+       │    └─ NavigableMap
 
