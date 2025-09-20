@@ -60,3 +60,20 @@ A Queue is an ordered collection where elements are processed in a specific orde
 
 Classes that implement Queue are: LinkedList, PriorityQueue, ArrayDeque, ConcurrentLinkedQueue, LinkedBlockingQueue, PriorityBlockingQueue
 
+
+
+
+
+What is Dynamic (Resizable) Collections?
+
+A dynamic collection is a collection that can grow or shrink automatically at runtime to accommodate elements, without requiring a fixed size.
+
+
+What is Thread Safe Collections?
+
+A thread-safe collection is a collection whose methods can be safely accessed by multiple threads concurrently without causing data inconsistency, race conditions, or corruption.
+
+
+
+
+
