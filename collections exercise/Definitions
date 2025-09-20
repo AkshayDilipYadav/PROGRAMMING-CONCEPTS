@@ -73,7 +73,16 @@ What is Thread Safe Collections?
 
 A thread-safe collection is a collection whose methods can be safely accessed by multiple threads concurrently without causing data inconsistency, race conditions, or corruption.
 
+What is a Contiguous Memory?
 
+Contiguous memory refers to a block of memory where all elements are stored sequentially in adjacent memory addresses. like an Array.
+Contiguous = elements stored next to each other → fast access, harder insertion.
+
+What is a Non Contiguous Memory?
+
+Non-contiguous memory refers to memory where elements are not stored sequentially.
+Each element (or node) can be stored anywhere in memory, and elements are connected via pointers or references.
+Non-contiguous = elements stored anywhere, linked via references → easy insertion, slower access.
 
 
 
