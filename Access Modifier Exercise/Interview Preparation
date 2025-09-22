@@ -1,11 +1,25 @@
+
+
+Access Modifiers - 
+
+Access modifiers are keywords in Java that control the visibility and accessibility 
+of classes, methods, and variables across different classes and packages.
+
+public - same class, same pkg, other pkg(subclass), other pkg(non- subclass)
+protected - same class, same pkg, other pkg(subclass)
+default - same class, same package
+private - same class
+
+
+
+
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 -  Basics & Theory
 
 Q1: What are access modifiers in Java?
 
-Access modifiers are keywords in Java that control the visibility and accessibility 
-of classes, methods, and variables across different classes and packages.
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
